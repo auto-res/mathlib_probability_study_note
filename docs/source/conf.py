@@ -23,5 +23,15 @@ exclude_patterns = []
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme = 'alabaster'
+# Theme settings
+html_theme = 'sphinx_rtd_theme'  # Or any other theme you prefer
+
+# Add any Sphinx extension module names here
+extensions = [
+    'sphinx.ext.autodoc',
+    'sphinx.ext.viewcode',
+    'sphinx.ext.napoleon',
+]
+
+# Output settings for GitHub Pages
 html_static_path = ['_static']
