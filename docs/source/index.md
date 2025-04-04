@@ -3,7 +3,7 @@
 % You can adapt this file completely to your liking, but it should at least
 % contain the root `toctree` directive.
 
-mathlib probability study note documentation
+Mathlib probability study note documentation
 ============================================
 
 # Welcome to hello's documentation!
