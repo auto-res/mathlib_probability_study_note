@@ -5,6 +5,7 @@ Mathlib probability study note documentation
 
 ## 数学
 
+- [サンプル](mathematics/sample.md)
 - [外測度](mathematics/outer_measure.md)
 
 ## mathlibのコード
