@@ -1,11 +1,10 @@
 Mathlib probability study note documentation
 ============================================
 
-このドキュメントは[Mathlib4の確率論](https://github.com/leanprover-community/mathlib4/tree/master/Mathlib/Probability)の内容を理解するための勉強ノートです. コードを一通り理解することを目標にしています. どなたでも編集や投稿を歓迎します.
+このドキュメントはMathlib4の[確率論](https://github.com/leanprover-community/mathlib4/tree/master/Mathlib/Probability)と[測度論](https://github.com/leanprover-community/mathlib4/tree/master/Mathlib/MeasureTheory)の内容を理解するための勉強ノートです. 基礎的な部分を理解することを目標にします. どなたでも編集や投稿を歓迎します.
 
-## 数学
+## MeasureTheory
 
-- [サンプル](mathematics/sample.md)
-- [外測度](mathematics/outer_measure.md)
+[MeasureTheory.OuterMeasure.Defs](MeasureTheory/OuterMeasure/Defs.md) - 外測度の定義
 
-## mathlibのコード
+## ProbabilityTheory
