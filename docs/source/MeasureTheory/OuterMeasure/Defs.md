@@ -16,7 +16,7 @@ structure OuterMeasure (α : Type*) where
   protected iUnion_nat : ∀ s : ℕ → Set α, Pairwise (Disjoint on s) →
     measureOf (⋃ i, s i) ≤ ∑' i, measureOf (s i)
 ```
-外測度は非負(`measureOf`), $\mu(\empty) = 0$ (`empty`), 単調性(`mono`), 可算劣加法性(`iUnion_nat`)により定義されます.
+外測度は非負(`measureOf`), $\mu(\emptyset) = 0$ (`empty`), 単調性(`mono`), 可算劣加法性(`iUnion_nat`)により定義されます.
 protectedによってOuterMeasure内部のフィールドをstructureと名前空間の外から参照することができないようになっています. またautomatic coercionにより`μ.measureOf s`を`μ s`とより直感的な形で書くことができます. 実際
 ``` lean4
 @[simp] theorem measureOf_eq_coe (m : OuterMeasure α) : m.measureOf = m := rfl
