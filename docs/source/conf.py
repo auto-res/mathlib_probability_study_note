@@ -15,7 +15,17 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.viewcode',
     'sphinx.ext.napoleon',
+    'sphinx.ext.mathjax',
     'myst_parser'
+]
+
+# MyST-Parser settings
+myst_enable_extensions = [
+    "dollarmath",       # インライン数式とディスプレイ数式のサポート
+    "amsmath",          # AMSマス環境のサポート
+    "colon_fence",      # :::コロン区切りの特殊ブロック
+    "deflist",          # 定義リスト
+    "html_image",       # HTML画像構文
 ]
 
 # マークダウンファイルの拡張子を指定
