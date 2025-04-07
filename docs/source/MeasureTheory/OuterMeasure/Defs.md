@@ -56,7 +56,7 @@ class OuterMeasureClass (F : Type*) (α : outParam Type*) [FunLike F (Set α) �
   protected measure_iUnion_nat_le (f : F) (s : ℕ → Set α) : Pairwise (Disjoint on s) →
     f (⋃ i, s i) ≤ ∑' i, f (s i)
 ```
-structureだけではなくclassも定義されています. 一般にstructureは具体的に定義をするのに対し, classは対象となる(structureも含む)型にある性質があるかどうかを示すために使われます. 例えばOuterMeasureClassはOuterMeasureの性質を持つ型のclassです. これはmeasureTheory.OuterMeasure.Defsに定義されているmeasureOf, empty, mono, iUnion_natの性質を持つ型のclassです. これによりmeasureTheory.OuterMeasure.Defsで定義された`measureOf`, `empty`, `mono`, `iUnion_nat`の性質を持つ型はOuterMeasureClassに属することができます.
+structureだけではなくclassも定義されています. 一般にstructureは具体的に定義をするのに対し, classは対象となる(structureも含む)型にある性質があるかどうかを示すために使われます. 例えばOuterMeasureClassはOuterMeasureの性質を持つ型のclassです. これはmeasureTheory.OuterMeasure.Defsに定義されている`measureOf`, `empty`, `mono`, `iUnion_nat`の性質を持つ型のclassです. これによりmeasureTheory.OuterMeasure.Defsで定義された`measureOf`, `empty`, `mono`, `iUnion_nat`の性質を持つ型はOuterMeasureClassに属することができます.
 
 ``` lean4
 instance : OuterMeasureClass (OuterMeasure α) α where
