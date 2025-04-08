@@ -1,7 +1,7 @@
 MeasureTheory.OuterMeasure.Defs
 ============================================
 
-このファイルでは外測度を定義しています. また測度論に関する他のファイルをimportしていない測度論の最も基本的なファイルの一つになります
+このファイルでは外測度を定義しています. また測度論に関する他のファイルをimportしていない測度論の最も基本的なファイルになります
 
 コード元
 [MeasureTheory.OuterMeasure.Defs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/MeasureTheory/OuterMeasure/Defs.html)
@@ -17,7 +17,8 @@ structure OuterMeasure (α : Type*) where
     measureOf (⋃ i, s i) ≤ ∑' i, measureOf (s i)
 ```
 外測度は非負(`measureOf`), $\mu(\emptyset) = 0$ (`empty`), 単調性(`mono`), 可算劣加法性(`iUnion_nat`)により定義されます.
-protectedによってOuterMeasure内部のフィールドをstructureと名前空間の外から参照することができないようになっています. またautomatic coercionにより`μ.measureOf s`を`μ s`とより直感的な形で書くことができます. 実際
+protectedによってOuterMeasure内部のフィールドをstructureと名前空間の外から参照することができないようになっています. 
+またautomatic coercionにより`μ.measureOf s`を`μ s`とより直感的な形で書くことができます. 実際
 ``` lean4
 @[simp] theorem measureOf_eq_coe (m : OuterMeasure α) : m.measureOf = m := rfl
 ```
