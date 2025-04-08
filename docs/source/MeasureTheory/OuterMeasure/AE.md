@@ -71,4 +71,4 @@ def Set (α : Type u) := α → Prop
 theorem ae_of_all {p : α → Prop} (μ : F) : (∀ a, p a) → ∀ᵐ a ∂μ, p a :=
   Eventually.of_forall
 ```
-`∀ᵐ a ∂μ, p a`は`{a | p a} ∈ ae μ`と定義されます. これは`Eventually.of_forall`により直接従います.
+`∀ᵐ a ∂μ, p a`は`{a | p a} ∈ ae μ`と定義されることに注意すると,`Eventually.of_forall`により直接従います.

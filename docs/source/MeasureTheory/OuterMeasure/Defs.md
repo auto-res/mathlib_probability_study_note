@@ -65,4 +65,4 @@ instance : OuterMeasureClass (OuterMeasure α) α where
   measure_mono f := f.mono
   measure_iUnion_nat_le f := f.iUnion_nat
 ```
-
+OuterMeasureはOuterMeasureの性質を持ちます.(当然)
