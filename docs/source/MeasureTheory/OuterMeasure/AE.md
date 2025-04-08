@@ -59,7 +59,7 @@ def Filter.ofCountableUnion (l : Set (Set α))
 ```
 
 `Filter.ofCountableInter`と`Filter.CountableUnion`は包含関係について逆の関係になっています. `Filter.CountableUnion`は要素である集合の補集合を要素とする集合族が`Filter.ofCountableInter`を満たすことを示すことによって証明されます.
-`Filter.ofCountableInter`は可算交叉の性質を持ち(`hUnion`), 上方向に閉じて(`hmono`)いる時, それはフィルタであることを示しています.
+`Filter.ofCountableInter`は可算交叉の性質を持ち(`hUnion`), 上方向に閉じて(`hmono`)いる時, それはフィルタであることを示しています. つまり`ae`は可算交叉の性質を持っていることに注意してください.
 
 `ae`の型を確認してみましょう. `(μ · = 0)`は`Set α → Prop`, `(fun _S hSc ↦ (measure_sUnion_null_iff hSc).2)`は`∀ (_S : Set (Set α)), _S.Countable → (∀ s ∈ _S, μ s = 0) → μ (⋃₀ _S) = 0`, `fun _t ht _s hs ↦ measure_mono_null hs ht`は`∀ _t ∈ fun x ↦ μ x = 0, ∀ _s ⊆ _t, μ _s = 0`という型を持っています. 一見これは`Filter.CountableUnion`に合致していないように見えますが, Setの型が
 ``` lean4

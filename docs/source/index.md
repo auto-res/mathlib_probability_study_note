@@ -10,8 +10,8 @@ Mathlib probability study note documentation
 
 ### Outer Measure
 
-[MeasureTheory.OuterMeasure.Defs](MeasureTheory/OuterMeasure/Defs.md) - 外測度の定義 (4/7)
-[MeasureTheory.OuterMeasure.AE](MeasureTheory/OuterMeasure/AE.md) - Almost everywhereの定義 (4/8)
+[MeasureTheory.OuterMeasure.Defs](MeasureTheory/OuterMeasure/Defs.md) - 外測度の定義 (4/7)　　
+[MeasureTheory.OuterMeasure.AE](MeasureTheory/OuterMeasure/AE.md) - Almost everywhereの定義 (4/8)　　
 [MeasureTheory.OuterMeasure.Operations](MeasureTheory/OuterMeasure/Operations.md) - map, dirac外測度の定義
 
 ## ProbabilityTheory
