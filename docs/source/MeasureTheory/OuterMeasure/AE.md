@@ -74,3 +74,12 @@ theorem ae_of_all {p : α → Prop} (μ : F) : (∀ a, p a) → ∀ᵐ a ∂μ, 
   Eventually.of_forall
 ```
 `∀ᵐ a ∂μ, p a`は`{a | p a} ∈ ae μ`と定義されることに注意すると,`Eventually.of_forall`により直接従います.
+
+``` lean4
+/-- `f =ᵐ[μ] g` means `f` and `g` are eventually equal along the a.e. filter,
+i.e. `f=g` away from a null set.
+
+This is notation for `Filter.EventuallyEq (MeasureTheory.ae μ) f g`. -/
+notation:50 f " =ᵐ[" μ:50 "] " g:50 => Filter.EventuallyEq (MeasureTheory.ae μ) f g
+```
+ほとんど至る所で`f = g`であることを`f =ᵐ[μ] g`と略記して書きます.

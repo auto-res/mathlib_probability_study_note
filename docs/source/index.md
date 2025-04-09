@@ -10,11 +10,16 @@ Mathlib probability study note documentation
 
 ### MeasurableSpace
 
+[MeasureTheory.MeasurableSpace.Defs](MeasureTheory/MeasurableSpace/Defs.md) - 可測空間, 可測関数の定義 (4/9)  
+[MeasureTheory.MeasurableSpace.Basic](MeasureTheory/MeasurableSpace/Basic.md) - 可測空間の基本的な性質
+
 ### Measure
+
+[MeasureTheory.Measure.MeasureSpaceDef](MeasureTheory/Measure/MeasureSpaceDef.md) - 測度の定義
 
 ### Outer Measure
 
 [MeasureTheory.OuterMeasure.Defs](MeasureTheory/OuterMeasure/Defs.md) - 外測度の定義 (4/7)  
-[MeasureTheory.OuterMeasure.AE](MeasureTheory/OuterMeasure/AE.md) - Almost everywhereの定義 (4/9)
+[MeasureTheory.OuterMeasure.AE](MeasureTheory/OuterMeasure/AE.md) - Almost everywhereの定義 (4/8)
 
 ## ProbabilityTheory

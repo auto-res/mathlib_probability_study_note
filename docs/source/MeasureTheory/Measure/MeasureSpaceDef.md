@@ -15,8 +15,28 @@ structure Measure (α : Type*) [MeasurableSpace α] extends OuterMeasure α wher
     toOuterMeasure (⋃ i, f i) = ∑' i, toOuterMeasure (f i)
   trim_le : toOuterMeasure.trim ≤ toOuterMeasure
 ```
+`m_iUnion`は可算加法性を示しています. これはOuterMeasureの`iUnion_nat`(可算劣加法性)より強いです.
+外測度に対する理解が深くないので`trim_le`については深くは解説しません.
 
 ``` lean4
+/-- A measure space is a measurable space equipped with a
+  measure, referred to as `volume`. -/
+class MeasureSpace (α : Type*) extends MeasurableSpace α where
+  volume : Measure α
+```
+測度空間`MeasureSpace`は可測空間に測度を付与したものです. `volume`はその測度を表しています.
+
+``` lean4
+/-- The tactic `exact volume`, to be used in optional (`autoParam`) arguments. -/
+macro "volume_tac" : tactic =>
+  `(tactic| (first | exact MeasureTheory.MeasureSpace.volume))
+```
+
+TODO
+
+``` lean4
+lemma ae_eq_refl (f : α → β) : f =ᵐ[μ] f := EventuallyEq.rfl
+
 /-- A function is almost everywhere measurable if it coincides almost everywhere with a measurable
 function. -/
 @[fun_prop]
@@ -27,3 +47,6 @@ def AEMeasurable {_m : MeasurableSpace α} (f : α → β) (μ : Measure α := b
 theorem Measurable.aemeasurable (h : Measurable f) : AEMeasurable f μ :=
   ⟨f, h, ae_eq_refl f⟩
 ```
+
+`AEMeasurable`は$\mu-a.e.$で同一視できる可測関数を持つことを示しています.
+`Measurable.aemeasurable`はAEMeasurableのgに自分自身(f)を入れることによって示すことができます. `ae_eq_refl`は`f =ᵐ[μ] f`を示しています.

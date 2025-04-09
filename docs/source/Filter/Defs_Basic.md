@@ -58,6 +58,14 @@ protected def Subset (s₁ s₂ : Set α) :=
   ∀ ⦃a⦄, a ∈ s₁ → a ∈ s₂
 ```
 
+``` lean4
+/-- Two functions `f` and `g` are *eventually equal* along a filter `l` if the set of `x` such that
+`f x = g x` belongs to `l`. -/
+def EventuallyEq (l : Filter α) (f g : α → β) : Prop :=
+  ∀ᶠ x in l, f x = g x
+```
+`EventuallyEq`は`{x | f x = g x} ∈ l`と同じ意味です.
+
 ## filter_upwards
 
 ``` lean4
