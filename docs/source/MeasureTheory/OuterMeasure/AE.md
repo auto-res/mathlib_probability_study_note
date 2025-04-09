@@ -2,6 +2,8 @@ MeasureTheory.OuterMeasure.AE
 ============================================
 このファイルでは外測度の零集合の補集合`s ∈ ae μ ↔ μ sᶜ = 0`を定義しています. 
 
+[MeasureTheory.OuterMeasure.AE](https://leanprover-community.github.io/mathlib4_docs/Mathlib/MeasureTheory/OuterMeasure/AE.html)
+
 ``` lean4
 /-- The “almost everywhere” filter of co-null sets. -/
 def ae (μ : F) : Filter α :=
@@ -65,7 +67,7 @@ def Filter.ofCountableUnion (l : Set (Set α))
 ``` lean4
 def Set (α : Type u) := α → Prop
 ```
-で特性関数と同一視する形で定義されているので, 正しく`Filter.CountableUnion`の型を満たしています.
+で特性関数と同一視する形で定義されているので, 実際は`Filter.CountableUnion`の型を満たしています.
 
 ``` lean4
 theorem ae_of_all {p : α → Prop} (μ : F) : (∀ a, p a) → ∀ᵐ a ∂μ, p a :=
