@@ -16,7 +16,8 @@ structure Measure (α : Type*) [MeasurableSpace α] extends OuterMeasure α wher
   trim_le : toOuterMeasure.trim ≤ toOuterMeasure
 ```
 `m_iUnion`は可算加法性を示しています. これはOuterMeasureの`iUnion_nat`(可算劣加法性)より強いです.
-外測度に対する理解が深くないので`trim_le`については深くは解説しません.
+
+TODO カラテオドリの公理的測度論を理解
 
 ``` lean4
 /-- A measure space is a measurable space equipped with a
