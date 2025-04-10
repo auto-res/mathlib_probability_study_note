@@ -17,8 +17,6 @@ structure Measure (α : Type*) [MeasurableSpace α] extends OuterMeasure α wher
 ```
 `m_iUnion`は可算加法性を示しています. これはOuterMeasureの`iUnion_nat`(可算劣加法性)より強いです.
 
-TODO カラテオドリの公理的測度論を理解
-
 ``` lean4
 /-- A measure space is a measurable space equipped with a
   measure, referred to as `volume`. -/
