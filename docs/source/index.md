@@ -1,7 +1,7 @@
 Mathlib probability study note documentation
 ============================================
 
-このドキュメントはMathlib4の[確率論](https://github.com/leanprover-community/mathlib4/tree/master/Mathlib/Probability)と[測度論](https://github.com/leanprover-community/mathlib4/tree/master/Mathlib/MeasureTheory)の内容を理解するための勉強ノートです. 基礎的な部分(特に定義)を理解することを目標にします. 目次の順番は依存関係を意識しています.
+このドキュメントはMathlib4の[確率論](https://github.com/leanprover-community/mathlib4/tree/master/Mathlib/Probability)と[測度論](https://github.com/leanprover-community/mathlib4/tree/master/Mathlib/MeasureTheory)の内容を理解するための勉強ノートです. 基礎的な部分(特に定義)を理解することを目標にします. 目次の順番は依存関係を意識しています. 今後の予定については[こちら](plan.md).
 
 どなたでも編集や投稿を歓迎します.
 
