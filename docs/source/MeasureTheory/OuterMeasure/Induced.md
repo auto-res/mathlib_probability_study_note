@@ -4,6 +4,8 @@ MeasureTheory.OuterMeasure.Induced
 コード元
 [MeasureTheory.OuterMeasure.Induced](https://leanprover-community.github.io/mathlib4_docs/Mathlib/MeasureTheory/OuterMeasure/Induced.html)
 
+## inducedOuterMeasure
+
 ``` lean4
 variable {α : Type*} {P : α → Prop}
 variable (m : ∀ s : α, P s → ℝ≥0∞)
@@ -50,8 +52,19 @@ def inducedOuterMeasure : OuterMeasure α :=
   OuterMeasure.ofFunction (extend m) (extend_empty P0 m0)
 ```
 
-`inducedOuterMeasure`について型の確認を行います. `ofFunction`は以下のように定義されています.
+`inducedOuterMeasure`について型の確認を行います. `ofFunction`は第一引数に`Set α → ℝ≥0∞`を取り([OfFunction](OfFunction.md)を参照), 第二引数に`m ∅ = 0`を取ります. 実際には`extend m`は`(s : Set α) → P s → ℝ≥0∞`の型をもち, `P s`はPropであるため, `extend m`は`Set α → ℝ≥0∞`の型を持ちます. また, `extend_empty P0 m0`は`m ∅ = 0`の型を持ちます. したがって`inducedOuterMeasure`は`OuterMeasure α`の型を持ちます.
+
+## trim
 
 ``` lean4
-MeasureTheory.OuterMeasure.ofFunction.{u_1} {α : Type u_1} (m : Set α → ℝ≥0∞) (m_empty : m ∅ = 0) : OuterMeasure α
+/-- Given an outer measure `m` we can forget its value on non-measurable sets, and then consider
+  `m.trim`, the unique maximal outer measure less than that function. -/
+def trim : OuterMeasure α :=
+  inducedOuterMeasure (P := MeasurableSet) (fun s _ => m s) .empty m.empty
+
+theorem le_trim_iff {m₁ m₂ : OuterMeasure α} :
+    m₁ ≤ m₂.trim ↔ ∀ s, MeasurableSet s → m₁ s ≤ m₂ s :=
+  le_inducedOuterMeasure
+
+theorem le_trim : m ≤ m.trim := le_trim_iff.2 fun _ _ ↦ le_rfl
 ```

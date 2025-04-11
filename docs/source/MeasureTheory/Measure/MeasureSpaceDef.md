@@ -30,7 +30,6 @@ class MeasureSpace (α : Type*) extends MeasurableSpace α where
 macro "volume_tac" : tactic =>
   `(tactic| (first | exact MeasureTheory.MeasureSpace.volume))
 ```
-
 TODO
 
 ``` lean4

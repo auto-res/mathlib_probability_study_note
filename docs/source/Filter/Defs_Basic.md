@@ -69,27 +69,21 @@ def EventuallyEq (l : Filter α) (f g : α → β) : Prop :=
 ## filter_upwards
 
 ``` lean4
-syntax (name := filterUpwards) "filter_upwards" (" [" term,* "]")?
-  (" with" (ppSpace colGt term:max)*)? (" using " term)? : tactic
 
-elab_rules : tactic
-| `(tactic| filter_upwards $[[$[$args],*]]? $[with $wth*]? $[using $usingArg]?) => do
-  let config : ApplyConfig := {newGoals := ApplyNewGoals.nonDependentOnly}
-  for e in args.getD #[] |>.reverse do
-    let goal ← getMainGoal
-    replaceMainGoal <| ← goal.withContext <| runTermElab do
-      let m ← mkFreshExprMVar none
-      let lem ← Term.elabTermEnsuringType
-        (← ``(Filter.mp_mem $e $(← Term.exprToSyntax m))) (← goal.getType)
-      goal.assign lem
-      return [m.mvarId!]
-  liftMetaTactic fun goal => do
-    goal.apply (← mkConstWithFreshMVarLevels ``Filter.univ_mem') config
-  evalTactic <|← `(tactic| dsimp (config := {zeta := false}) only [Set.mem_setOf_eq])
-  if let some l := wth then
-    evalTactic <|← `(tactic| intro $[$l]*)
-  if let some e := usingArg then
-    evalTactic <|← `(tactic| exact $e)
+/--
+`filter_upwards [h₁, ⋯, hₙ]` replaces a goal of the form `s ∈ f` and terms
+`h₁ : t₁ ∈ f, ⋯, hₙ : tₙ ∈ f` with `∀ x, x ∈ t₁ → ⋯ → x ∈ tₙ → x ∈ s`.
+The list is an optional parameter, `[]` being its default value.
+
+`filter_upwards [h₁, ⋯, hₙ] with a₁ a₂ ⋯ aₖ` is a short form for
+`{ filter_upwards [h₁, ⋯, hₙ], intros a₁ a₂ ⋯ aₖ }`.
+
+`filter_upwards [h₁, ⋯, hₙ] using e` is a short form for
+`{ filter_upwards [h1, ⋯, hn], exact e }`.
+
+Combining both shortcuts is done by writing `filter_upwards [h₁, ⋯, hₙ] with a₁ a₂ ⋯ aₖ using e`.
+Note that in this case, the `aᵢ` terms can be used in `e`.
+--/
 ```
 
 TODO
