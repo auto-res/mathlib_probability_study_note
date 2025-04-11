@@ -17,7 +17,7 @@ structure OuterMeasure (α : Type*) where
     measureOf (⋃ i, s i) ≤ ∑' i, measureOf (s i)
 ```
 外測度は非負(`measureOf`), $\mu(\emptyset) = 0$ (`empty`), 単調性(`mono`), 可算劣加法性(`iUnion_nat`)により定義されます.
-protectedによってOuterMeasure内部のフィールドをstructureと名前空間の外から参照することができないようになっています. 
+protectedによってOuterMeasure内部のフィールドをstructureと名前空間の外から参照することができないようになっています. `measureOf`は集合を引数にとります.
 またautomatic coercionにより`μ.measureOf s`を`μ s`とより直感的な形で書くことができます. 実際
 ``` lean4
 @[simp] theorem measureOf_eq_coe (m : OuterMeasure α) : m.measureOf = m := rfl
