@@ -1,0 +1,178 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MeasureTheory.OuterMeasure.AE &mdash; mathlib probability study note  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            mathlib probability study note
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">MeasureTheory.OuterMeasure.AE</a></li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">mathlib probability study note</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">MeasureTheory.OuterMeasure.AE</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/MeasureTheory/OuterMeasure/AE.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="measuretheory-outermeasure-ae">
+<h1>MeasureTheory.OuterMeasure.AE<a class="headerlink" href="#measuretheory-outermeasure-ae" title="Link to this heading"></a></h1>
+<p>このファイルでは外測度の零集合の補集合<code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">∈</span> <span class="pre">ae</span> <span class="pre">μ</span> <span class="pre">↔</span> <span class="pre">μ</span> <span class="pre">sᶜ</span> <span class="pre">=</span> <span class="pre">0</span></code>を定義しています.</p>
+<p><a class="reference external" href="https://leanprover-community.github.io/mathlib4_docs/Mathlib/MeasureTheory/OuterMeasure/AE.html">MeasureTheory.OuterMeasure.AE</a></p>
+<div class="highlight-lean4 notranslate"><div class="highlight"><pre><span></span><span class="sd">/-- The “almost everywhere” filter of co-null sets. -/</span>
+<span class="kn">def</span><span class="w"> </span><span class="n">ae</span><span class="w"> </span><span class="o">(</span><span class="n">μ</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">F</span><span class="o">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Filter</span><span class="w"> </span><span class="n">α</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">  </span><span class="bp">.</span><span class="n">ofCountableUnion</span><span class="w"> </span><span class="o">(</span><span class="n">μ</span><span class="w"> </span><span class="bp">·</span><span class="w"> </span><span class="bp">=</span><span class="w"> </span><span class="mi">0</span><span class="o">)</span><span class="w"> </span><span class="o">(</span><span class="k">fun</span><span class="w"> </span><span class="bp">_</span><span class="n">S</span><span class="w"> </span><span class="n">hSc</span><span class="w"> </span><span class="bp">↦</span><span class="w"> </span><span class="o">(</span><span class="n">measure_sUnion_null_iff</span><span class="w"> </span><span class="n">hSc</span><span class="o">)</span><span class="bp">.</span><span class="m">2</span><span class="o">)</span><span class="w"> </span><span class="k">fun</span><span class="w"> </span><span class="bp">_</span><span class="n">t</span><span class="w"> </span><span class="n">ht</span><span class="w"> </span><span class="bp">_</span><span class="n">s</span><span class="w"> </span><span class="n">hs</span><span class="w"> </span><span class="bp">↦</span>
+<span class="w">    </span><span class="n">measure_mono_null</span><span class="w"> </span><span class="n">hs</span><span class="w"> </span><span class="n">ht</span>
+
+<span class="sd">/-- `∀ᵐ a ∂μ, p a` means that `p a` for a.e. `a`, i.e. `p` holds true away from a null set.</span>
+
+<span class="sd">This is notation for `Filter.Eventually p (MeasureTheory.ae μ)`. -/</span>
+<span class="n">notation3</span><span class="w"> </span><span class="s2">&quot;∀ᵐ &quot;</span><span class="o">(</span><span class="bp">...</span><span class="o">)</span><span class="s2">&quot; ∂&quot;</span><span class="n">μ</span><span class="s2">&quot;, &quot;</span><span class="n">r</span><span class="o">:(</span><span class="kn">scoped</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="bp">=&gt;</span><span class="w"> </span><span class="n">Filter</span><span class="bp">.</span><span class="n">Eventually</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="bp">&lt;|</span><span class="w"> </span><span class="n">MeasureTheory</span><span class="bp">.</span><span class="n">ae</span><span class="w"> </span><span class="n">μ</span><span class="o">)</span><span class="w"> </span><span class="bp">=&gt;</span><span class="w"> </span><span class="n">r</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">measure_sUnion_null_iff</span></code>とはMeasureTheory.OuterMeasure.Basicで, <code class="docutils literal notranslate"><span class="pre">Filter.ofCountableUnion</span></code>はOrder.Filter.CountableInterで定義されています. それぞれについてコードを見ることで<code class="docutils literal notranslate"><span class="pre">ae</span></code>の定義を理解しましょう.</p>
+<div class="highlight-lean4 notranslate"><div class="highlight"><pre><span></span><span class="kn">theorem</span><span class="w"> </span><span class="n">measure_sUnion_null_iff</span><span class="w"> </span><span class="o">{</span><span class="n">S</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Set</span><span class="w"> </span><span class="o">(</span><span class="n">Set</span><span class="w"> </span><span class="n">α</span><span class="o">)}</span><span class="w"> </span><span class="o">(</span><span class="n">hS</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">S</span><span class="bp">.</span><span class="n">Countable</span><span class="o">)</span><span class="w"> </span><span class="o">:</span>
+<span class="w">    </span><span class="n">μ</span><span class="w"> </span><span class="o">(</span><span class="bp">⋃₀</span><span class="w"> </span><span class="n">S</span><span class="o">)</span><span class="w"> </span><span class="bp">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="bp">↔</span><span class="w"> </span><span class="bp">∀</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="bp">∈</span><span class="w"> </span><span class="n">S</span><span class="o">,</span><span class="w"> </span><span class="n">μ</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="bp">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">by</span>
+<span class="w">  </span><span class="n">rw</span><span class="w"> </span><span class="o">[</span><span class="n">sUnion_eq_biUnion</span><span class="o">,</span><span class="w"> </span><span class="n">measure_biUnion_null_iff</span><span class="w"> </span><span class="n">hS</span><span class="o">]</span>
+
+<span class="kn">theorem</span><span class="w"> </span><span class="n">measure_mono_null</span><span class="w"> </span><span class="o">(</span><span class="n">h</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="bp">⊆</span><span class="w"> </span><span class="n">t</span><span class="o">)</span><span class="w"> </span><span class="o">(</span><span class="n">ht</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">μ</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="bp">=</span><span class="w"> </span><span class="mi">0</span><span class="o">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">μ</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="bp">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">  </span><span class="n">eq_bot_mono</span><span class="w"> </span><span class="o">(</span><span class="n">measure_mono</span><span class="w"> </span><span class="n">h</span><span class="o">)</span><span class="w"> </span><span class="n">ht</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">measure_sUnion_null_iff</span></code>は可算個の集合の合併が零集合であることと, 各集合が零集合であることが同値であることを示しています. <code class="docutils literal notranslate"><span class="pre">measure_mono_null</span></code>は包含関係と零集合の条件から, 零集合であることを示しています.</p>
+<div class="highlight-lean4 notranslate"><div class="highlight"><pre><span></span><span class="sd">/-- Construct a filter with countable intersection property. This constructor deduces</span>
+<span class="sd">`Filter.univ_sets` and `Filter.inter_sets` from the countable intersection property. -/</span>
+<span class="kn">def</span><span class="w"> </span><span class="n">Filter</span><span class="bp">.</span><span class="n">ofCountableInter</span><span class="w"> </span><span class="o">(</span><span class="n">l</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Set</span><span class="w"> </span><span class="o">(</span><span class="n">Set</span><span class="w"> </span><span class="n">α</span><span class="o">))</span>
+<span class="w">    </span><span class="o">(</span><span class="n">hl</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="bp">∀</span><span class="w"> </span><span class="n">S</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Set</span><span class="w"> </span><span class="o">(</span><span class="n">Set</span><span class="w"> </span><span class="n">α</span><span class="o">),</span><span class="w"> </span><span class="n">S</span><span class="bp">.</span><span class="n">Countable</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="n">S</span><span class="w"> </span><span class="bp">⊆</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="bp">⋂₀</span><span class="w"> </span><span class="n">S</span><span class="w"> </span><span class="bp">∈</span><span class="w"> </span><span class="n">l</span><span class="o">)</span>
+<span class="w">    </span><span class="o">(</span><span class="n">h_mono</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="bp">∀</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="n">t</span><span class="o">,</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="bp">∈</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="bp">⊆</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="bp">∈</span><span class="w"> </span><span class="n">l</span><span class="o">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Filter</span><span class="w"> </span><span class="n">α</span><span class="w"> </span><span class="kn">where</span>
+<span class="w">  </span><span class="n">sets</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">l</span>
+<span class="w">  </span><span class="n">univ_sets</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="bp">@</span><span class="n">sInter_empty</span><span class="w"> </span><span class="n">α</span><span class="w"> </span><span class="bp">▸</span><span class="w"> </span><span class="n">hl</span><span class="w"> </span><span class="bp">_</span><span class="w"> </span><span class="n">countable_empty</span><span class="w"> </span><span class="o">(</span><span class="n">empty_subset</span><span class="w"> </span><span class="bp">_</span><span class="o">)</span>
+<span class="w">  </span><span class="n">sets_of_superset</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">h_mono</span><span class="w"> </span><span class="bp">_</span><span class="w"> </span><span class="bp">_</span>
+<span class="w">  </span><span class="n">inter_sets</span><span class="w"> </span><span class="o">{</span><span class="n">s</span><span class="w"> </span><span class="n">t</span><span class="o">}</span><span class="w"> </span><span class="n">hs</span><span class="w"> </span><span class="n">ht</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">sInter_pair</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="bp">▸</span>
+<span class="w">    </span><span class="n">hl</span><span class="w"> </span><span class="bp">_</span><span class="w"> </span><span class="o">((</span><span class="n">countable_singleton</span><span class="w"> </span><span class="bp">_</span><span class="o">)</span><span class="bp">.</span><span class="n">insert</span><span class="w"> </span><span class="bp">_</span><span class="o">)</span><span class="w"> </span><span class="o">(</span><span class="n">insert_subset_iff</span><span class="bp">.</span><span class="m">2</span><span class="w"> </span><span class="bp">⟨</span><span class="n">hs</span><span class="o">,</span><span class="w"> </span><span class="n">singleton_subset_iff</span><span class="bp">.</span><span class="m">2</span><span class="w"> </span><span class="n">ht</span><span class="bp">⟩</span><span class="o">)</span>
+
+<span class="sd">/-- Construct a filter with countable intersection property.</span>
+<span class="sd">Similarly to `Filter.comk`, a set belongs to this filter if its complement satisfies the property.</span>
+<span class="sd">Similarly to `Filter.ofCountableInter`,</span>
+<span class="sd">this constructor deduces some properties from the countable intersection property</span>
+<span class="sd">which becomes the countable union property because we take complements of all sets. -/</span>
+<span class="kn">def</span><span class="w"> </span><span class="n">Filter</span><span class="bp">.</span><span class="n">ofCountableUnion</span><span class="w"> </span><span class="o">(</span><span class="n">l</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Set</span><span class="w"> </span><span class="o">(</span><span class="n">Set</span><span class="w"> </span><span class="n">α</span><span class="o">))</span>
+<span class="w">    </span><span class="o">(</span><span class="n">hUnion</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="bp">∀</span><span class="w"> </span><span class="n">S</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Set</span><span class="w"> </span><span class="o">(</span><span class="n">Set</span><span class="w"> </span><span class="n">α</span><span class="o">),</span><span class="w"> </span><span class="n">S</span><span class="bp">.</span><span class="n">Countable</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="o">(</span><span class="bp">∀</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="bp">∈</span><span class="w"> </span><span class="n">S</span><span class="o">,</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="bp">∈</span><span class="w"> </span><span class="n">l</span><span class="o">)</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="bp">⋃₀</span><span class="w"> </span><span class="n">S</span><span class="w"> </span><span class="bp">∈</span><span class="w"> </span><span class="n">l</span><span class="o">)</span>
+<span class="w">    </span><span class="o">(</span><span class="n">hmono</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="bp">∀</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="bp">∈</span><span class="w"> </span><span class="n">l</span><span class="o">,</span><span class="w"> </span><span class="bp">∀</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="bp">⊆</span><span class="w"> </span><span class="n">t</span><span class="o">,</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="bp">∈</span><span class="w"> </span><span class="n">l</span><span class="o">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Filter</span><span class="w"> </span><span class="n">α</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">by</span>
+<span class="w">  </span><span class="n">refine</span><span class="w"> </span><span class="bp">.</span><span class="n">ofCountableInter</span><span class="w"> </span><span class="o">{</span><span class="n">s</span><span class="w"> </span><span class="bp">|</span><span class="w"> </span><span class="n">s</span><span class="bp">ᶜ</span><span class="w"> </span><span class="bp">∈</span><span class="w"> </span><span class="n">l</span><span class="o">}</span><span class="w"> </span><span class="o">(</span><span class="k">fun</span><span class="w"> </span><span class="n">S</span><span class="w"> </span><span class="n">hSc</span><span class="w"> </span><span class="n">hSp</span><span class="w"> </span><span class="bp">↦</span><span class="w"> </span><span class="bp">?_</span><span class="o">)</span><span class="w"> </span><span class="k">fun</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="n">ht</span><span class="w"> </span><span class="n">hsub</span><span class="w"> </span><span class="bp">↦</span><span class="w"> </span><span class="bp">?_</span>
+<span class="w">  </span><span class="bp">·</span><span class="w"> </span><span class="n">rw</span><span class="w"> </span><span class="o">[</span><span class="n">mem_setOf_eq</span><span class="o">,</span><span class="w"> </span><span class="n">compl_sInter</span><span class="o">]</span>
+<span class="w">    </span><span class="n">apply</span><span class="w"> </span><span class="n">hUnion</span><span class="w"> </span><span class="o">(</span><span class="n">compl</span><span class="w"> </span><span class="bp">&#39;&#39;</span><span class="w"> </span><span class="n">S</span><span class="o">)</span><span class="w"> </span><span class="o">(</span><span class="n">hSc</span><span class="bp">.</span><span class="n">image</span><span class="w"> </span><span class="bp">_</span><span class="o">)</span>
+<span class="w">    </span><span class="n">intro</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="n">hs</span>
+<span class="w">    </span><span class="n">rw</span><span class="w"> </span><span class="o">[</span><span class="n">mem_image</span><span class="o">]</span><span class="w"> </span><span class="k">at</span><span class="w"> </span><span class="n">hs</span>
+<span class="w">    </span><span class="n">rcases</span><span class="w"> </span><span class="n">hs</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="bp">⟨</span><span class="n">t</span><span class="o">,</span><span class="w"> </span><span class="n">ht</span><span class="o">,</span><span class="w"> </span><span class="n">rfl</span><span class="bp">⟩</span>
+<span class="w">    </span><span class="n">apply</span><span class="w"> </span><span class="n">hSp</span><span class="w"> </span><span class="n">ht</span>
+<span class="w">  </span><span class="bp">·</span><span class="w"> </span><span class="n">rw</span><span class="w"> </span><span class="o">[</span><span class="n">mem_setOf_eq</span><span class="o">]</span>
+<span class="w">    </span><span class="n">rw</span><span class="w"> </span><span class="o">[</span><span class="bp">←</span><span class="w"> </span><span class="n">compl_subset_compl</span><span class="o">]</span><span class="w"> </span><span class="k">at</span><span class="w"> </span><span class="n">hsub</span>
+<span class="w">    </span><span class="n">exact</span><span class="w"> </span><span class="n">hmono</span><span class="w"> </span><span class="n">s</span><span class="bp">ᶜ</span><span class="w"> </span><span class="n">ht</span><span class="w"> </span><span class="n">t</span><span class="bp">ᶜ</span><span class="w"> </span><span class="n">hsub</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Filter.ofCountableInter</span></code>と<code class="docutils literal notranslate"><span class="pre">Filter.CountableUnion</span></code>は包含関係について逆の関係になっています. <code class="docutils literal notranslate"><span class="pre">Filter.CountableUnion</span></code>は要素である集合の補集合を要素とする集合族が<code class="docutils literal notranslate"><span class="pre">Filter.ofCountableInter</span></code>を満たすことを示すことによって証明されます.
+<code class="docutils literal notranslate"><span class="pre">Filter.ofCountableInter</span></code>は可算交叉の性質を持ち(<code class="docutils literal notranslate"><span class="pre">hUnion</span></code>), 上方向に閉じて(<code class="docutils literal notranslate"><span class="pre">hmono</span></code>)いる時, それはフィルタであることを示しています. つまり<code class="docutils literal notranslate"><span class="pre">ae</span></code>は可算交叉の性質を持っていることに注意してください.</p>
+<p><code class="docutils literal notranslate"><span class="pre">ae</span></code>の型を確認してみましょう. <code class="docutils literal notranslate"><span class="pre">(μ</span> <span class="pre">·</span> <span class="pre">=</span> <span class="pre">0)</span></code>は<code class="docutils literal notranslate"><span class="pre">Set</span> <span class="pre">α</span> <span class="pre">→</span> <span class="pre">Prop</span></code>, <code class="docutils literal notranslate"><span class="pre">(fun</span> <span class="pre">_S</span> <span class="pre">hSc</span> <span class="pre">↦</span> <span class="pre">(measure_sUnion_null_iff</span> <span class="pre">hSc).2)</span></code>は<code class="docutils literal notranslate"><span class="pre">∀</span> <span class="pre">(_S</span> <span class="pre">:</span> <span class="pre">Set</span> <span class="pre">(Set</span> <span class="pre">α)),</span> <span class="pre">_S.Countable</span> <span class="pre">→</span> <span class="pre">(∀</span> <span class="pre">s</span> <span class="pre">∈</span> <span class="pre">_S,</span> <span class="pre">μ</span> <span class="pre">s</span> <span class="pre">=</span> <span class="pre">0)</span> <span class="pre">→</span> <span class="pre">μ</span> <span class="pre">(⋃₀</span> <span class="pre">_S)</span> <span class="pre">=</span> <span class="pre">0</span></code>, <code class="docutils literal notranslate"><span class="pre">fun</span> <span class="pre">_t</span> <span class="pre">ht</span> <span class="pre">_s</span> <span class="pre">hs</span> <span class="pre">↦</span> <span class="pre">measure_mono_null</span> <span class="pre">hs</span> <span class="pre">ht</span></code>は<code class="docutils literal notranslate"><span class="pre">∀</span> <span class="pre">_t</span> <span class="pre">∈</span> <span class="pre">fun</span> <span class="pre">x</span> <span class="pre">↦</span> <span class="pre">μ</span> <span class="pre">x</span> <span class="pre">=</span> <span class="pre">0,</span> <span class="pre">∀</span> <span class="pre">_s</span> <span class="pre">⊆</span> <span class="pre">_t,</span> <span class="pre">μ</span> <span class="pre">_s</span> <span class="pre">=</span> <span class="pre">0</span></code>という型を持っています. 一見これは<code class="docutils literal notranslate"><span class="pre">Filter.CountableUnion</span></code>に合致していないように見えますが, Setの型が</p>
+<div class="highlight-lean4 notranslate"><div class="highlight"><pre><span></span><span class="kn">def</span><span class="w"> </span><span class="n">Set</span><span class="w"> </span><span class="o">(</span><span class="n">α</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">Type</span><span class="w"> </span><span class="n">u</span><span class="o">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">α</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="kt">Prop</span>
+</pre></div>
+</div>
+<p>で特性関数と同一視する形で定義されているので, 実際は<code class="docutils literal notranslate"><span class="pre">Filter.CountableUnion</span></code>の型を満たしています.</p>
+<div class="highlight-lean4 notranslate"><div class="highlight"><pre><span></span><span class="kn">theorem</span><span class="w"> </span><span class="n">ae_of_all</span><span class="w"> </span><span class="o">{</span><span class="n">p</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">α</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="kt">Prop</span><span class="o">}</span><span class="w"> </span><span class="o">(</span><span class="n">μ</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">F</span><span class="o">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="o">(</span><span class="bp">∀</span><span class="w"> </span><span class="n">a</span><span class="o">,</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="n">a</span><span class="o">)</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="bp">∀ᵐ</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="bp">∂</span><span class="n">μ</span><span class="o">,</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">  </span><span class="n">Eventually</span><span class="bp">.</span><span class="n">of_forall</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">∀ᵐ</span> <span class="pre">a</span> <span class="pre">∂μ,</span> <span class="pre">p</span> <span class="pre">a</span></code>は<code class="docutils literal notranslate"><span class="pre">{a</span> <span class="pre">|</span> <span class="pre">p</span> <span class="pre">a}</span> <span class="pre">∈</span> <span class="pre">ae</span> <span class="pre">μ</span></code>と定義されることに注意すると,<code class="docutils literal notranslate"><span class="pre">Eventually.of_forall</span></code>により直接従います.</p>
+<div class="highlight-lean4 notranslate"><div class="highlight"><pre><span></span><span class="sd">/-- `f =ᵐ[μ] g` means `f` and `g` are eventually equal along the a.e. filter,</span>
+<span class="sd">i.e. `f=g` away from a null set.</span>
+
+<span class="sd">This is notation for `Filter.EventuallyEq (MeasureTheory.ae μ) f g`. -/</span>
+<span class="kn">notation</span><span class="o">:</span><span class="mi">50</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="s2">&quot; =ᵐ[&quot;</span><span class="w"> </span><span class="n">μ</span><span class="o">:</span><span class="mi">50</span><span class="w"> </span><span class="s2">&quot;] &quot;</span><span class="w"> </span><span class="n">g</span><span class="o">:</span><span class="mi">50</span><span class="w"> </span><span class="bp">=&gt;</span><span class="w"> </span><span class="n">Filter</span><span class="bp">.</span><span class="n">EventuallyEq</span><span class="w"> </span><span class="o">(</span><span class="n">MeasureTheory</span><span class="bp">.</span><span class="n">ae</span><span class="w"> </span><span class="n">μ</span><span class="o">)</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="n">g</span>
+</pre></div>
+</div>
+<p>ほとんど至る所で<code class="docutils literal notranslate"><span class="pre">f</span> <span class="pre">=</span> <span class="pre">g</span></code>であることを<code class="docutils literal notranslate"><span class="pre">f</span> <span class="pre">=ᵐ[μ]</span> <span class="pre">g</span></code>と略記して書きます.</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Kei Tsukamoto.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
