@@ -15,7 +15,13 @@ structure Measure (α : Type*) [MeasurableSpace α] extends OuterMeasure α wher
     toOuterMeasure (⋃ i, f i) = ∑' i, toOuterMeasure (f i)
   trim_le : toOuterMeasure.trim ≤ toOuterMeasure
 ```
-`m_iUnion`は可算加法性を示しています. これはOuterMeasureの`iUnion_nat`(可算劣加法性)より強いです.
+`m_iUnion`は可算加法性を示しています. これはOuterMeasureの`iUnion_nat`(可算劣加法性)より強いです. 
+`trim_le`は外測度の$\sigma$-加法族への制限が元の外測度より小さいことを述べています. `toOuterMeasure`は`OuterMeasure α`の型を持ちます.
+``` lean4
+theorem trimmed (μ : Measure α) : μ.toOuterMeasure.trim = μ.toOuterMeasure :=
+  le_antisymm μ.trim_le μ.1.le_trim
+```
+すべての外測度で成り立つ`le_trim`と合わせると, `toOuterMeasure.trim = toOuterMeasure`が成り立ちます.
 
 ``` lean4
 /-- A measure space is a measurable space equipped with a

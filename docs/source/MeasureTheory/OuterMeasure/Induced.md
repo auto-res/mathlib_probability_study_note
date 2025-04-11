@@ -62,9 +62,7 @@ def inducedOuterMeasure : OuterMeasure α :=
 def trim : OuterMeasure α :=
   inducedOuterMeasure (P := MeasurableSet) (fun s _ => m s) .empty m.empty
 
-theorem le_trim_iff {m₁ m₂ : OuterMeasure α} :
-    m₁ ≤ m₂.trim ↔ ∀ s, MeasurableSet s → m₁ s ≤ m₂ s :=
-  le_inducedOuterMeasure
-
 theorem le_trim : m ≤ m.trim := le_trim_iff.2 fun _ _ ↦ le_rfl
 ```
+
+`trim`は全ての$\sigma$-加法族ではない集合に対して値を`inf`を置き換えた外測度(外測度の$\sigma$-加法族への制限)です. この時, `le_trim : m ≤ m.trim`が成り立ちます.
