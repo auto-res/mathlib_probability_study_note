@@ -14,3 +14,4 @@
 kernel  
 条件付きとか独立をどう形式化するか
 Azuma-Hoeffdingを理解
+Factors-through(Doob-dynkin)を理解
