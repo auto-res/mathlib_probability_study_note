@@ -1,7 +1,7 @@
 Mathlib probability study note documentation
 ============================================
 
-このドキュメントはMathlib4の[確率論](https://github.com/leanprover-community/mathlib4/tree/master/Mathlib/Probability)と[測度論](https://github.com/leanprover-community/mathlib4/tree/master/Mathlib/MeasureTheory)の内容を理解するための勉強ノートです. 説明の粒度にムラがあることはご了承ください. 基礎的な部分(特に定義)を理解することを目標にします. 目次の順番は依存関係を意識しています. 今後の予定については[こちら](plan.md).
+このドキュメントはMathlib4の[確率論](https://github.com/leanprover-community/mathlib4/tree/master/Mathlib/Probability)と[測度論](https://github.com/leanprover-community/mathlib4/tree/master/Mathlib/MeasureTheory)の内容を理解するための勉強ノートです. 基礎的な部分(特に定義)を理解することを目標にします. 目次の順番は依存関係を意識しています. 今後の予定については[こちら](plan.md).
 
 どなたでも編集や投稿を歓迎します.
 特にfilter_upwardとvolume_tacの説明をしてくださる方を探しています.
@@ -28,5 +28,8 @@ Mathlib probability study note documentation
 [MeasureTheory.Measure.MeasureSpaceDef](MeasureTheory/Measure/MeasureSpaceDef.md) - 測度の定義 (4/12)
 
 ### Function
+
+[MeasureTheory.Function.SimpleFunc](MeasureTheory/Function/SimpleFunc.md) - 単関数の定義 (4/13)  
+[MeasureTheory.Function.Lesbegue](MeasureTheory/Measure/Lesbegue.md) - lintegral (4/13)
 
 ## ProbabilityTheory

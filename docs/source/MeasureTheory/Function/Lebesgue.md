@@ -11,6 +11,7 @@ MeasureTheory.MeasureSpace.Lebesgue
 irreducible_def lintegral {_ : MeasurableSpace α} (μ : Measure α) (f : α → ℝ≥0∞) : ℝ≥0∞ :=
   ⨆ (g : α →ₛ ℝ≥0∞) (_ : ⇑g ≤ f), g.lintegral μ
 ```
+`g ≤ f`を満たす単関数`g`の中で積分が最大となるものを`lintegral`で定義します.
 
 ``` lean4
 @[inherit_doc MeasureTheory.lintegral]
