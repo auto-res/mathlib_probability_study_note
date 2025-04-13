@@ -7,7 +7,8 @@ Mathlib probability study note documentation
 特にfilter_upwardとvolume_tacの説明をしてくださる方を探しています.
 
 ## Filter
-[Filter.Defs, Basic](Filter/Defs_Basic.md) - フィルタ, Eventuallyの定義, filter_upwards (4/12)
+[Filter.Defs](Filter/Defs.md) - フィルタに関する概念 (4/12)
+[Filter.Basic](Filter/Basic.md) - フィルタの基本的な性質 (4/12)
 
 ## MeasureTheory
 
@@ -33,3 +34,8 @@ Mathlib probability study note documentation
 [MeasureTheory.Function.Lesbegue](MeasureTheory/Measure/Lesbegue.md) - lintegral (4/13)
 
 ## ProbabilityTheory
+
+# 参考文献(本)
+- [ルベーグ積分入門](https://www.shokabo.co.jp/mybooks/ISBN978-4-7853-1304-3.html) - カラテオドリの公理論的測度論で参考にしました.
+- [Analysis in Banach Spaces](https://link.springer.com/book/10.1007/978-3-319-48520-1) - ボホナー積分で参考にしました.
+- [Foundations of Modern Probability](https://link.springer.com/book/10.1007/978-3-030-61871-1) - 確率論の基礎付けで参考にしました.

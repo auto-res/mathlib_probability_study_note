@@ -1,4 +1,4 @@
-Filter.Defs, Filter.Basic
+Filter.Defs
 ============================================
 
 このファイルではフィルタを定義しています. 測度の定義で使う部分を抜き出して説明します.
@@ -37,17 +37,6 @@ notation3 "∀ᶠ "(...)" in "f", "r:(scoped p => Filter.Eventually p f) => r
 ```
 
 この定義は「述語pを満たす要素xの集合がフィルターfに属している」ことを表しています. この定義の妥当性を具体例を用いて説明します. 補集合が有限である自然数の集合の集合である補有限フィルターを考えます. このときpの補集合は有限であるため, 十分大きなxに対してpが成り立つことを意味します. `∀ᶠ`は`Eventually`の略記です.
-
-``` lean4
-theorem mem_of_superset {x y : Set α} (hx : x ∈ f) (hxy : x ⊆ y) : y ∈ f :=
-  f.sets_of_superset hx hxy
-
-theorem univ_mem' (h : ∀ a, a ∈ s) : s ∈ f :=
-  mem_of_superset univ_mem fun x _ => h x
-
-theorem Eventually.of_forall {p : α → Prop} {f : Filter α} (hp : ∀ x, p x) : ∀ᶠ x in f, p x :=
-  univ_mem' hp
-```
 
 `Eventually.of_forall`は全てのxについてpが成り立てば, "十分大きな"xについてpが成り立つことを述べた主張です.
 ちなみに`univ_mem'`の`fun x _ => h x`は`∀ x ∈ Set.univ, x ∈ s`ですが, `Set.Subset`の定義よりこれは`Set.univ ⊆ s`そのものです.
