@@ -4,7 +4,6 @@
 
 # これから測度論に加えたいもの
 filter_upwardとvolume_tacの説明
-ボホナー積分(`integral`)+ボホナー$\mu-$可測(`StronglyMeasurable`)
 
 # 確率論に加えたいもの
 kernelの形式化
