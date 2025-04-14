@@ -7,32 +7,31 @@ Mathlib probability study note documentation
 特にfilter_upwardとvolume_tacの説明をしてくださる方を探しています.
 
 ## Filter
-[Filter.Defs](Filter/Defs.md) - フィルタに関する概念 (4/12)  
-[Filter.Basic](Filter/Basic.md) - フィルタの基本的な性質 (4/12)
+[Filter.Defs](Filter/Defs.md) - フィルタに関する概念  
+[Filter.Basic](Filter/Basic.md) - フィルタの基本的な性質  
 
 ## MeasureTheory
 
 ### Outer Measure
 
-[MeasureTheory.OuterMeasure.Defs](MeasureTheory/OuterMeasure/Defs.md) - 外測度の定義 (4/7)  
-[MeasureTheory.OuterMeasure.AE](MeasureTheory/OuterMeasure/AE.md) - Almost everywhereの定義 (4/8)
-[MeasureTheory.OuterMeasure.OfFunction](MeasureTheory/OuterMeasure/OfFunction.md) - 外測度の別定義 (4/12)
-[MeasureTheory.OuterMeasure.Induced](MeasureTheory/OuterMeasure/Induced.md) - 外測度の可測集合への制限 (4/12)
+[MeasureTheory.OuterMeasure.Defs](MeasureTheory/OuterMeasure/Defs.md) - 外測度の定義  
+[MeasureTheory.OuterMeasure.AE](MeasureTheory/OuterMeasure/AE.md) - Almost everywhereの定義  
+[MeasureTheory.OuterMeasure.OfFunction](MeasureTheory/OuterMeasure/OfFunction.md) - 外測度の別定義  
+[MeasureTheory.OuterMeasure.Induced](MeasureTheory/OuterMeasure/Induced.md) - 外測度の可測集合への制限  
 
 ### MeasurableSpace
 
-[MeasureTheory.MeasurableSpace.Defs](MeasureTheory/MeasurableSpace/Defs.md) - 可測空間, 可測関数の定義 (4/9)  
-[MeasureTheory.MeasurableSpace.Basic](MeasureTheory/MeasurableSpace/Basic.md) - 可測空間の基本的な性質 (4/12)
-
+[MeasureTheory.MeasurableSpace.Defs](MeasureTheory/MeasurableSpace/Defs.md) - 可測空間, 可測関数の定義  
+[MeasureTheory.MeasurableSpace.Basic](MeasureTheory/MeasurableSpace/Basic.md) - 可測空間の基本的な性質  
 ### Measure
 
-[MeasureTheory.Measure.MeasureSpaceDef](MeasureTheory/Measure/MeasureSpaceDef.md) - 測度の定義 (4/12)
+[MeasureTheory.Measure.MeasureSpaceDef](MeasureTheory/Measure/MeasureSpaceDef.md) - 測度の定義  
 
 ### Function
 
-[MeasureTheory.Function.SimpleFunc](MeasureTheory/Function/SimpleFunc.md) - 単関数の定義 (4/13)  
-[MeasureTheory.Function.Lesbegue](MeasureTheory/Measure/Lesbegue.md) - lintegral (4/13)
-[MeasureTheory.Function.HasFiniteIntegral](MeasureTheory/Function/HasFiniteIntegral.md) - 絶対可積分性の定義
+[MeasureTheory.Function.SimpleFunc](MeasureTheory/Function/SimpleFunc.md) - 単関数の定義  
+[MeasureTheory.Function.Lesbegue](MeasureTheory/Measure/Lesbegue.md) - lintegral   
+[MeasureTheory.Function.HasFiniteIntegral](MeasureTheory/Function/HasFiniteIntegral.md) - 絶対可積分性の定義  
 [MeasureTheory.Function.Integrable](MeasureTheory/Function/Integrable.md) - 可積分性の定義
 
 ## ProbabilityTheory
