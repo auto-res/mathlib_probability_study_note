@@ -32,6 +32,8 @@ Mathlib probability study note documentation
 
 [MeasureTheory.Function.SimpleFunc](MeasureTheory/Function/SimpleFunc.md) - 単関数の定義 (4/13)  
 [MeasureTheory.Function.Lesbegue](MeasureTheory/Measure/Lesbegue.md) - lintegral (4/13)
+[MeasureTheory.Function.HasFiniteIntegral](MeasureTheory/Function/HasFiniteIntegral.md) - 絶対可積分性の定義
+[MeasureTheory.Function.Integrable](MeasureTheory/Function/Integrable.md) - 可積分性の定義
 
 ## ProbabilityTheory
 
