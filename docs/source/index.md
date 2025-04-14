@@ -36,8 +36,3 @@ Mathlib probability study note documentation
 [MeasureTheory.Function.Integrable](MeasureTheory/Function/Integrable.md) - 可積分性の定義
 
 ## ProbabilityTheory
-
-# 参考文献(本)
-- [ルベーグ積分入門](https://www.shokabo.co.jp/mybooks/ISBN978-4-7853-1304-3.html) - カラテオドリの公理論的測度論で参考にしました.
-- [Analysis in Banach Spaces](https://link.springer.com/book/10.1007/978-3-319-48520-1) - ボホナー積分で参考にしました.
-- [Foundations of Modern Probability](https://link.springer.com/book/10.1007/978-3-030-61871-1) - 確率論の基礎付けで参考にしました.
