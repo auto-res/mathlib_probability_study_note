@@ -65,4 +65,4 @@ def trim : OuterMeasure α :=
 theorem le_trim : m ≤ m.trim := le_trim_iff.2 fun _ _ ↦ le_rfl
 ```
 
-`trim`は全ての$\sigma$-加法族ではない集合に対して値を`inf`を置き換えた外測度(外測度の$\sigma$-加法族への制限)です. この時, `le_trim : m ≤ m.trim`が成り立ちます.
+`trim`は全ての可測集合ではない集合に対しての外測度を`inf`を置き換えた外測度(外測度の可測集合への制限)です. この時, `le_trim : m ≤ m.trim`が成り立ちます.

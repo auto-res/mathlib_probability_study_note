@@ -16,7 +16,7 @@ structure Measure (α : Type*) [MeasurableSpace α] extends OuterMeasure α wher
   trim_le : toOuterMeasure.trim ≤ toOuterMeasure
 ```
 `m_iUnion`は可算加法性を示しています. これはOuterMeasureの`iUnion_nat`(可算劣加法性)より強いです. 
-`trim_le`は外測度の$\sigma$-加法族への制限が元の外測度より小さいことを述べています. `toOuterMeasure`は`OuterMeasure α`の型を持ちます.
+`trim_le`は外測度の可測集合への制限が元の外測度より小さいことを述べています. `toOuterMeasure`は`OuterMeasure α`の型を持ちます.
 ``` lean4
 theorem trimmed (μ : Measure α) : μ.toOuterMeasure.trim = μ.toOuterMeasure :=
   le_antisymm μ.trim_le μ.1.le_trim
@@ -29,7 +29,7 @@ theorem trimmed (μ : Measure α) : μ.toOuterMeasure.trim = μ.toOuterMeasure :
 class MeasureSpace (α : Type*) extends MeasurableSpace α where
   volume : Measure α
 ```
-測度空間`MeasureSpace`は可測空間に測度を付与したものです. `volume`はその測度を表しています.
+測度空間`MeasureSpace`は可測空間に測度を付与したものです. `volume`はその測度を表し, OuterMeasureの性質と`m_iUnion`, `trim_le`を満たします.
 
 ``` lean4
 /-- The tactic `exact volume`, to be used in optional (`autoParam`) arguments. -/
