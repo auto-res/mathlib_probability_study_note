@@ -32,7 +32,7 @@ theorem hasFiniteIntegral_iff_norm (f : α → β) :
     HasFiniteIntegral f μ ↔ (∫⁻ a, ENNReal.ofReal ‖f a‖ ∂μ) < ∞ := by
   simp only [hasFiniteIntegral_iff_enorm, ofReal_norm_eq_enorm]
 ```
-`f`の値域が`NormedAddCommGroup`(ノルム付き可換群)である時, `HasFiniteIntegral`は`f`のノルムの絶対可積分性と同値です. これは以下の`ofReal_norm_eq_enorm`から従います. ここで`@[to_additive ofReal_norm_eq_enorm]`は, `ofReal_norm_eq_enorm`の二項演算子`*`を`+`に変えたバージョンを生成するためのタグです. 
+`f`の値域が`NormedAddCommGroup`(ノルム付き可換群)である時, `HasFiniteIntegral`は`f`のノルムの絶対可積分性と同値です. これは以下の`ofReal_norm_eq_enorm`から従います. ここで`@[to_additive ofReal_norm_eq_enorm]`は, `E`をSeminormedGroupからSeminormedAddGroupに変え, `ofReal_norm_eq_enorm`の二項演算子`*`を`+`に変えたバージョンを生成するためのタグです. 
 
 ``` lean4
 variable [SeminormedGroup E]
