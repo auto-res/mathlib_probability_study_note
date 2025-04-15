@@ -6,6 +6,7 @@ Mathlib probability study note documentation
 このノートブックへの貢献を歓迎しています. お気軽にPull RequestやIssueをお寄せください.
 
 ## Filter
+
 [Filter.Defs](Filter/Defs.md) - フィルタに関する概念  
 [Filter.Basic](Filter/Basic.md) - フィルタの基本的な性質  
 
@@ -22,9 +23,11 @@ Mathlib probability study note documentation
 
 [MeasureTheory.MeasurableSpace.Defs](MeasureTheory/MeasurableSpace/Defs.md) - 可測空間, 可測関数の定義  
 [MeasureTheory.MeasurableSpace.Basic](MeasureTheory/MeasurableSpace/Basic.md) - 可測空間の基本的な性質  
+
 ### Measure
 
 [MeasureTheory.Measure.MeasureSpaceDef](MeasureTheory/Measure/MeasureSpaceDef.md) - 測度の定義  
+[MeasureTheory.Measure.GiryMonad](MeasureTheory/Measure/GiryMonad.md) - Giry monad
 
 ### Function
 
@@ -34,3 +37,14 @@ Mathlib probability study note documentation
 [MeasureTheory.Function.Integrable](MeasureTheory/Function/Integrable.md) - 可積分性の定義
 
 ## ProbabilityTheory
+
+[ProbabilityTheory.ConditionalProbability](ProbabilityTheory/ConditionalProbability.md) - 条件付き確率の定義
+
+### Kernel
+
+[ProbabilityTheory.Kernel.Defs](ProbabilityTheory/Kernel/Defs.md) - カーネルの定義  
+
+### Independence
+
+[ProbabilityTheory.Independence.Kernel](ProbabilityTheory/Independence/Kernel.md) - カーネルによる独立性の定義  
+[ProbabilityTheory.Independence.Basic](ProbabilityTheory/Independence/Basic.md) - 測度から独立性の定義

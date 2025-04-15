@@ -11,7 +11,7 @@ def const (α : Type*) {β : Type*} [MeasurableSpace α] {_ : MeasurableSpace β
   toFun _ := μβ
   measurable' := measurable_const
 ```
-Constant Kernelとは, どんな引数を与えても同じ測度を返す関数です.また, この関数は可測になっています.
+Constant Kernelはどんな引数を与えても同じ測度を返す関数です.また, この関数は可測になっています.
 
 ``` lean4
 /-- The dirac outer measure. -/

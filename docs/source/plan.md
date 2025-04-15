@@ -3,6 +3,5 @@
 ====================================================================
 
 # 確率論に加えたいもの
-Kernel.Basic
-ConditionalProbability
-Independence.Basic
+Giry monad  
+Doob dynkin

@@ -39,6 +39,22 @@ macro "volume_tac" : tactic =>
 TODO
 
 ``` lean4
+def ofMeasurable (m : ∀ s : Set α, MeasurableSet s → ℝ≥0∞) (m0 : m ∅ MeasurableSet.empty = 0)
+    (mU :
+      ∀ ⦃f : ℕ → Set α⦄ (h : ∀ i, MeasurableSet (f i)),
+        Pairwise (Disjoint on f) → m (⋃ i, f i) (MeasurableSet.iUnion h) = ∑' i, m (f i) (h i)) :
+    Measure α :=
+  { toOuterMeasure := inducedOuterMeasure m _ m0
+    m_iUnion := fun f hf hd =>
+      show inducedOuterMeasure m _ m0 (iUnion f) = ∑' i, inducedOuterMeasure m _ m0 (f i) by
+        rw [inducedOuterMeasure_eq m0 mU, mU hf hd]
+        congr; funext n; rw [inducedOuterMeasure_eq m0 mU]
+    trim_le := le_inducedOuterMeasure.2 fun s hs ↦ by
+      rw [OuterMeasure.trim_eq _ hs, inducedOuterMeasure_eq m0 mU hs] }
+```
+`m`, `m0`, `mU`を満たすとき, `Measure α`を構成します.
+
+``` lean4
 lemma ae_eq_refl (f : α → β) : f =ᵐ[μ] f := EventuallyEq.rfl
 
 /-- A function is almost everywhere measurable if it coincides almost everywhere with a measurable
