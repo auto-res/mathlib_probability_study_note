@@ -1,7 +1,7 @@
-Probability.Theory.Kernel.Defs
+ProbabilityTheory.Kernel.Defs
 ==================================
 
-このファイルではkernelの定義を行います. カーネルの説明付け加える
+このファイルでは確率論で条件つき確率や独立を扱う際の基礎となるkernelの定義を行います. 
 
 ``` lean4
 /-- A kernel from a measurable space `α` to another measurable space `β` is a measurable function
@@ -20,8 +20,12 @@ structure Kernel (α β : Type*) [MeasurableSpace α] [MeasurableSpace β] where
   measurable' : Measurable toFun
 ```
 
+kernelは測度空間`α`から測度空間`β`への可測関数であり, その値は測度です. 
+
 ``` lean4
 /-- A kernel is a Markov kernel if every measure in its image is a probability measure. -/
 class IsMarkovKernel (κ : Kernel α β) : Prop where
   isProbabilityMeasure : ∀ a, IsProbabilityMeasure (κ a)
 ```
+
+値域の測度が確率測度であるとき, kernelはMarkov kernelと呼ばれます. 

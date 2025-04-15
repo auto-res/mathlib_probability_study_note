@@ -2,9 +2,7 @@
 
 ====================================================================
 
-# これから測度論に加えたいもの
-filter_upwardとvolume_tacの説明
-
 # 確率論に加えたいもの
-kernelの形式化
-条件付きとか独立の形式化
+Kernel.Basic
+ConditionalProbability
+Independence.Basic

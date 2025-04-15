@@ -29,7 +29,7 @@ Mathlib probability study note documentation
 ### Function
 
 [MeasureTheory.Function.SimpleFunc](MeasureTheory/Function/SimpleFunc.md) - 単関数の定義  
-[MeasureTheory.Function.Lebesgue](MeasureTheory/Measure/Lebesgue.md) - lintegral   
+[MeasureTheory.Function.Lebesgue](MeasureTheory/Function/Lebesgue.md) - lintegral   
 [MeasureTheory.Function.HasFiniteIntegral](MeasureTheory/Function/HasFiniteIntegral.md) - 絶対可積分性の定義  
 [MeasureTheory.Function.Integrable](MeasureTheory/Function/Integrable.md) - 可積分性の定義
 
