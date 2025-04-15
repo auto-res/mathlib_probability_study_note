@@ -20,7 +20,7 @@ structure Kernel (α β : Type*) [MeasurableSpace α] [MeasurableSpace β] where
   measurable' : Measurable toFun
 ```
 
-kernelは測度空間`α`から測度空間`β`への可測関数であり, その値は測度です. 
+kernelは測度空間`α`から測度空間`β`への可測関数であり, その値は測度です. つまり`κ`をkernelとすると, `κ (a : α) (s : Set β)`は非負の実数を返します.
 
 ``` lean4
 /-- A kernel is a Markov kernel if every measure in its image is a probability measure. -/
