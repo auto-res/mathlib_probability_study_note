@@ -24,6 +24,35 @@ structure Filter (α : Type*) where
 ```
 フィルタは全体集合を含み(univ_sets), 上方向に閉じていて(sets_of_superset), 有限交叉に関して閉じている(inter_sets)集合族です.
 
+``` lean4
+/-- Construct a filter from a property that is stable under finite unions.
+A set `s` belongs to `Filter.comk p _ _ _` iff its complement satisfies the predicate `p`.
+This constructor is useful to define filters like `Filter.cofinite`. -/
+def comk (p : Set α → Prop) (he : p ∅) (hmono : ∀ t, p t → ∀ s ⊆ t, p s)
+    (hunion : ∀ s, p s → ∀ t, p t → p (s ∪ t)) : Filter α where
+  sets := {t | p tᶜ}
+  univ_sets := by simpa
+  sets_of_superset := fun ht₁ ht => hmono _ ht₁ _ (compl_subset_compl.2 ht)
+  inter_sets := fun ht₁ ht₂ => by simp [compl_inter, hunion _ ht₁ _ ht₂]
+```
+これはフィルタの定義を補集合で定義するものです.この定義は以下のように`Filter.cofinite`で使われます.
+
+``` lean4
+/-- The cofinite filter is the filter of subsets whose complements are finite. -/
+def cofinite : Filter α :=
+  comk Set.Finite finite_empty (fun _t ht _s hsub ↦ ht.subset hsub) fun _ h _ ↦ h.union
+```
+
+``` lean4
+/-- The forward map of a filter -/
+def map (m : α → β) (f : Filter α) : Filter β where
+  sets := preimage m ⁻¹' f.sets
+  univ_sets := univ_mem
+  sets_of_superset hs st := mem_of_superset hs fun _x hx ↦ st hx
+  inter_sets hs ht := inter_mem hs ht
+```
+`Filter.map`はフィルタの押し出しです.
+
 ## Eventually
 
 ``` lean4

@@ -5,7 +5,7 @@ Filter.Basic
 コード元
 [Filter.Basic](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Order/Filter/Basic.html)
 
-このファイルではフィルタの基本的な性質を定義しています.　測度論における定義で出てくる最小限の定理を紹介します.
+このファイルではフィルタの基本的な性質を定義しています.
 
 ```
 theorem Eventually.of_forall {p : α → Prop} {f : Filter α} (hp : ∀ x, p x) : ∀ᶠ x in f, p x :=
