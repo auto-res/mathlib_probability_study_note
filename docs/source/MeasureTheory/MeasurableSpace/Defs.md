@@ -4,7 +4,7 @@ MeasureTheory.MeasureSpace.Defs
 このファイルでは可測空間, $\sigma$-加法族, 可測関数の定義を行います.
 
 コード元
-[MeasureTheory.Measure.MeasurableSpace.Defs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/MeasureTheory/Measure.MeasurableSpace.Defs.html)
+[MeasureTheory.MeasurableSpace.Defs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/MeasureTheory/MeasurableSpace/Defs.html)
 
 ``` lean4
 /-- A measurable space is a space equipped with a σ-algebra. -/
