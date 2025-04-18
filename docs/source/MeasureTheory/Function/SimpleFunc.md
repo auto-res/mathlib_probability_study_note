@@ -4,7 +4,7 @@ MeasureTheory.MeasureSpace.Lebesgue
 このファイルでは単関数の積分の定義を行います.
 
 コード元
-[MeasureTheory.MeasurableSpace.SimpleFunc](https://leanprover-community.github.io/mathlib4_docs/Mathlib/MeasureTheory/MeasurableSpace/SimpleFunc.html)
+[MeasureTheory.MeasurableSpace.SimpleFunc](https://leanprover-community.github.io/mathlib4_docs/Mathlib/MeasureTheory/Function/SimpleFunc.html)
 
 ``` lean4
 /-- A function `f` from a measurable space to any type is called *simple*,

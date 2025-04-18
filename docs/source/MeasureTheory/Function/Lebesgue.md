@@ -4,7 +4,7 @@ MeasureTheory.MeasureSpace.Lebesgue
 このファイルでは下ルベーグ積分の定義を行います.
 
 コード元
-[MeasureTheory.MeasurableSpace.Lebesgue](https://leanprover-community.github.io/mathlib4_docs/Mathlib/MeasureTheory/MeasurableSpace/Lebesgue.html)
+[MeasureTheory.MeasurableSpace.Lebesgue](https://leanprover-community.github.io/mathlib4_docs/Mathlib/MeasureTheory/Integral/Lebesgue/Basic.html)
 
 ``` lean4
 /-- The **lower Lebesgue integral** of a function `f` with respect to a measure `μ`. -/
