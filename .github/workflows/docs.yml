@@ -5,6 +5,19 @@ on:
     branches: [ main ]
 
 jobs:
+  check-links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Link Checker
+        uses: lycheeverse/lychee-action@v1.5.4
+        with:
+          args: --verbose --no-progress './**/*.md' './**/*.html'
+          fail: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
@@ -25,11 +38,11 @@ jobs:
         run: |
           cd docs
           make html
-          touch build/html/.nojekyll  # Prevent Jekyll processing
+          touch build/html/.nojekyll # Prevent Jekyll processing
           
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs/build/html
-          force_orphan: true  # Create a single-commit gh-pages branch
+          force_orphan: true # Create a single-commit gh-pages branch
