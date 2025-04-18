@@ -1,0 +1,150 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MeasureTheory.Measure.GiryMonad &mdash; mathlib probability study note  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            mathlib probability study note
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">MeasureTheory.Measure.GiryMonad</a></li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">mathlib probability study note</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">MeasureTheory.Measure.GiryMonad</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/MeasureTheory/Measure/GiryMonad.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="measuretheory-measure-girymonad">
+<h1>MeasureTheory.Measure.GiryMonad<a class="headerlink" href="#measuretheory-measure-girymonad" title="Link to this heading"></a></h1>
+<div class="highlight-lean4 notranslate"><div class="highlight"><pre><span></span><span class="sd">/-- Monadic join on `Measure` in the category of measurable spaces and measurable</span>
+<span class="sd">functions. -/</span>
+<span class="kn">def</span><span class="w"> </span><span class="n">join</span><span class="w"> </span><span class="o">(</span><span class="n">m</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Measure</span><span class="w"> </span><span class="o">(</span><span class="n">Measure</span><span class="w"> </span><span class="n">α</span><span class="o">))</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Measure</span><span class="w"> </span><span class="n">α</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">  </span><span class="n">Measure</span><span class="bp">.</span><span class="n">ofMeasurable</span><span class="w"> </span><span class="o">(</span><span class="k">fun</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="bp">_</span><span class="w"> </span><span class="bp">=&gt;</span><span class="w"> </span><span class="bp">∫⁻</span><span class="w"> </span><span class="n">μ</span><span class="o">,</span><span class="w"> </span><span class="n">μ</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="bp">∂</span><span class="n">m</span><span class="o">)</span>
+<span class="w">    </span><span class="o">(</span><span class="k">by</span><span class="w"> </span><span class="n">simp</span><span class="w"> </span><span class="n">only</span><span class="w"> </span><span class="o">[</span><span class="n">measure_empty</span><span class="o">,</span><span class="w"> </span><span class="n">lintegral_const</span><span class="o">,</span><span class="w"> </span><span class="n">zero_mul</span><span class="o">])</span>
+<span class="w">    </span><span class="o">(</span><span class="k">by</span>
+<span class="w">      </span><span class="n">intro</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="n">hf</span><span class="w"> </span><span class="n">h</span>
+<span class="w">      </span><span class="n">simp_rw</span><span class="w"> </span><span class="o">[</span><span class="n">measure_iUnion</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="n">hf</span><span class="o">]</span>
+<span class="w">      </span><span class="n">apply</span><span class="w"> </span><span class="n">lintegral_tsum</span>
+<span class="w">      </span><span class="n">intro</span><span class="w"> </span><span class="n">i</span><span class="bp">;</span><span class="w"> </span><span class="n">exact</span><span class="w"> </span><span class="o">(</span><span class="n">measurable_coe</span><span class="w"> </span><span class="o">(</span><span class="n">hf</span><span class="w"> </span><span class="n">i</span><span class="o">))</span><span class="bp">.</span><span class="n">aemeasurable</span><span class="o">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">join</span></code>は測度の測度を測度に戻す操作です. これはモナドにおける<code class="docutils literal notranslate"><span class="pre">join</span></code>に相当します.
+<code class="docutils literal notranslate"><span class="pre">fun</span> <span class="pre">s</span> <span class="pre">_</span> <span class="pre">=&gt;</span> <span class="pre">∫⁻</span> <span class="pre">μ,</span> <span class="pre">μ</span> <span class="pre">s</span> <span class="pre">∂m</span></code>は<code class="docutils literal notranslate"><span class="pre">(s</span> <span class="pre">:</span> <span class="pre">Set</span> <span class="pre">α)</span> <span class="pre">→</span> <span class="pre">MeasurableSet</span> <span class="pre">s</span> <span class="pre">→</span> <span class="pre">ℝ≥0∞</span></code>を型に持ち, <code class="docutils literal notranslate"><span class="pre">(by</span> <span class="pre">simp</span> <span class="pre">only</span> <span class="pre">[measure_empty,</span> <span class="pre">lintegral_const,</span> <span class="pre">zero_mul])</span></code>は<code class="docutils literal notranslate"><span class="pre">(fun</span> <span class="pre">s</span> <span class="pre">x</span> <span class="pre">↦</span> <span class="pre">∫⁻</span> <span class="pre">(μ</span> <span class="pre">:</span> <span class="pre">Measure</span> <span class="pre">α),</span> <span class="pre">μ</span> <span class="pre">s</span> <span class="pre">∂m)</span> <span class="pre">∅</span> <span class="pre">⋯</span> <span class="pre">=</span> <span class="pre">0</span></code>を示し,</p>
+<div class="highlight-lean4 notranslate"><div class="highlight"><pre><span></span><span class="o">(</span><span class="k">by</span>
+<span class="w">    </span><span class="n">intro</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="n">hf</span><span class="w"> </span><span class="n">h</span>
+<span class="w">    </span><span class="n">simp_rw</span><span class="w"> </span><span class="o">[</span><span class="n">measure_iUnion</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="n">hf</span><span class="o">]</span>
+<span class="w">    </span><span class="n">apply</span><span class="w"> </span><span class="n">lintegral_tsum</span>
+<span class="w">    </span><span class="n">intro</span><span class="w"> </span><span class="n">i</span><span class="bp">;</span><span class="w"> </span><span class="n">exact</span><span class="w"> </span><span class="o">(</span><span class="n">measurable_coe</span><span class="w"> </span><span class="o">(</span><span class="n">hf</span><span class="w"> </span><span class="n">i</span><span class="o">))</span><span class="bp">.</span><span class="n">aemeasurable</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>は以下を示しています.</p>
+<div class="highlight-lean4 notranslate"><div class="highlight"><pre><span></span><span class="bp">∀</span><span class="w"> </span><span class="o">⦃</span><span class="n">f</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">ℕ</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="n">Set</span><span class="w"> </span><span class="n">α</span><span class="o">⦄</span><span class="w"> </span><span class="o">(</span><span class="n">h</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="bp">∀</span><span class="w"> </span><span class="o">(</span><span class="n">i</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">ℕ</span><span class="o">),</span><span class="w"> </span><span class="n">MeasurableSet</span><span class="w"> </span><span class="o">(</span><span class="n">f</span><span class="w"> </span><span class="n">i</span><span class="o">)),</span>
+<span class="w">  </span><span class="n">Pairwise</span><span class="w"> </span><span class="o">(</span><span class="n">Function</span><span class="bp">.</span><span class="n">onFun</span><span class="w"> </span><span class="n">Disjoint</span><span class="w"> </span><span class="n">f</span><span class="o">)</span><span class="w"> </span><span class="bp">→</span>
+<span class="w">    </span><span class="o">(</span><span class="k">fun</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="bp">↦</span><span class="w"> </span><span class="bp">∫⁻</span><span class="w"> </span><span class="o">(</span><span class="n">μ</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Measure</span><span class="w"> </span><span class="n">α</span><span class="o">),</span><span class="w"> </span><span class="n">μ</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="bp">∂</span><span class="n">m</span><span class="o">)</span><span class="w"> </span><span class="o">(</span><span class="bp">⋃</span><span class="w"> </span><span class="n">i</span><span class="o">,</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="n">i</span><span class="o">)</span><span class="w"> </span><span class="bp">⋯</span><span class="w"> </span><span class="bp">=</span><span class="w"> </span><span class="bp">∑&#39;</span><span class="w"> </span><span class="o">(</span><span class="n">i</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">ℕ</span><span class="o">),</span><span class="w"> </span><span class="o">(</span><span class="k">fun</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="bp">↦</span><span class="w"> </span><span class="bp">∫⁻</span><span class="w"> </span><span class="o">(</span><span class="n">μ</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Measure</span><span class="w"> </span><span class="n">α</span><span class="o">),</span><span class="w"> </span><span class="n">μ</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="bp">∂</span><span class="n">m</span><span class="o">)</span><span class="w"> </span><span class="o">(</span><span class="n">f</span><span class="w"> </span><span class="n">i</span><span class="o">)</span><span class="w"> </span><span class="bp">⋯</span>
+</pre></div>
+</div>
+<div class="highlight-lean4 notranslate"><div class="highlight"><pre><span></span><span class="sd">/-- Monadic bind on `Measure`, only works in the category of measurable spaces and measurable</span>
+<span class="sd">functions. When the function `f` is not measurable the result is not well defined. -/</span>
+<span class="kn">def</span><span class="w"> </span><span class="n">bind</span><span class="w"> </span><span class="o">(</span><span class="n">m</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Measure</span><span class="w"> </span><span class="n">α</span><span class="o">)</span><span class="w"> </span><span class="o">(</span><span class="n">f</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">α</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="n">Measure</span><span class="w"> </span><span class="n">β</span><span class="o">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Measure</span><span class="w"> </span><span class="n">β</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">  </span><span class="n">join</span><span class="w"> </span><span class="o">(</span><span class="n">map</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="n">m</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>これはモナドにおける<code class="docutils literal notranslate"><span class="pre">bind</span></code>に相当します.</p>
+<div class="highlight-lean4 notranslate"><div class="highlight"><pre><span></span><span class="ss">`map</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="n">m</span><span class="bp">`の型は</span><span class="ss">`Measure</span><span class="w"> </span><span class="o">(</span><span class="n">Measure</span><span class="w"> </span><span class="n">β</span><span class="o">)</span><span class="bp">`であるので</span><span class="ss">`join</span><span class="bp">`の引数と型が一致します.</span>
+
+<span class="bp">```</span><span class="w"> </span><span class="n">lean4</span>
+<span class="kn">variable</span><span class="w"> </span><span class="o">{</span><span class="n">μ</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Measure</span><span class="w"> </span><span class="n">α</span><span class="o">}</span><span class="w"> </span><span class="o">{</span><span class="n">κ</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Kernel</span><span class="w"> </span><span class="n">α</span><span class="w"> </span><span class="n">β</span><span class="o">}</span>
+
+<span class="sd">/-- Composition of a measure and a kernel.</span>
+
+<span class="sd">Notation for `MeasureTheory.Measure.bind` -/</span>
+<span class="kn">scoped</span><span class="o">[</span><span class="n">ProbabilityTheory</span><span class="o">]</span><span class="w"> </span><span class="kn">notation</span><span class="o">:</span><span class="mi">100</span><span class="w"> </span><span class="n">κ</span><span class="o">:</span><span class="mi">101</span><span class="w"> </span><span class="s2">&quot; ∘ₘ &quot;</span><span class="w"> </span><span class="n">μ</span><span class="o">:</span><span class="mi">100</span><span class="w"> </span><span class="bp">=&gt;</span><span class="w"> </span><span class="n">MeasureTheory</span><span class="bp">.</span><span class="n">Measure</span><span class="bp">.</span><span class="n">bind</span><span class="w"> </span><span class="n">μ</span><span class="w"> </span><span class="n">κ</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">μ</span></code>が測度で<code class="docutils literal notranslate"><span class="pre">κ</span></code>がカーネルであるとき, つまりbindの定義における<code class="docutils literal notranslate"><span class="pre">f</span></code>が可測関数の時, <code class="docutils literal notranslate"><span class="pre">MeasureTheory.Measure.bind</span></code>は<code class="docutils literal notranslate"><span class="pre">∘ₘ</span></code>を使って書くこともできます.</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Kei Tsukamoto.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
