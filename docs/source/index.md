@@ -8,9 +8,9 @@ Mathlib probability study note documentation
 ## Filter
 
 [Filter.Defs](Filter/Defs.md) - フィルタに関する概念  
-[Filter.Basic](Filter/Basic.md) - フィルタの基本的な性質 
-[Filter.AtTopBot](Filter/AtTopBot.md) - フィルタの上限と下限
-[Filter.Topology](Filter/Topology.md) - 位相空間におけるフィルタ
+[Filter.Basic](Filter/Basic.md) - フィルタの基本的な性質  
+[Filter.AtTopBot](Filter/AtTopBot.md) - フィルタの上限と下限  
+[Filter.Topology](Filter/Topology.md) - 位相空間におけるフィルタ  
 
 ## MeasureTheory
 
@@ -36,12 +36,12 @@ Mathlib probability study note documentation
 [MeasureTheory.Function.SimpleFunc](MeasureTheory/Function/SimpleFunc.md) - 単関数の定義  
 [MeasureTheory.Function.Lebesgue](MeasureTheory/Function/Lebesgue.md) - lintegral   
 [MeasureTheory.Function.HasFiniteIntegral](MeasureTheory/Function/HasFiniteIntegral.md) - 絶対可積分性の定義  
-[MeasureTheory.Function.Integrable](MeasureTheory/Function/Integrable.md) - 可積分性の定義
-[MeasureTheory.Function.StronglyMeasurable](MeasureTheory/Function/StronglyMeasurable.md) - 強可測性の定義
+[MeasureTheory.Function.Integrable](MeasureTheory/Function/Integrable.md) - 可積分性の定義  
+[MeasureTheory.Function.StronglyMeasurable](MeasureTheory/Function/StronglyMeasurable.md) - 強可測性の定義  
 
 ## ProbabilityTheory
 
-[ProbabilityTheory.ConditionalProbability](ProbabilityTheory/ConditionalProbability.md) - 条件付き確率の定義
+[ProbabilityTheory.ConditionalProbability](ProbabilityTheory/ConditionalProbability.md) - 条件付き確率の定義   
 
 ### Kernel
 
@@ -50,4 +50,4 @@ Mathlib probability study note documentation
 ### Independence
 
 [ProbabilityTheory.Independence.Kernel](ProbabilityTheory/Independence/Kernel.md) - カーネルによる独立性の定義  
-[ProbabilityTheory.Independence.Basic](ProbabilityTheory/Independence/Basic.md) - 測度から独立性の定義
+[ProbabilityTheory.Independence.Basic](ProbabilityTheory/Independence/Basic.md) - 測度から独立性の定義  
