@@ -35,6 +35,7 @@ Mathlib probability study note documentation
 [MeasureTheory.Function.Lebesgue](MeasureTheory/Function/Lebesgue.md) - lintegral   
 [MeasureTheory.Function.HasFiniteIntegral](MeasureTheory/Function/HasFiniteIntegral.md) - 絶対可積分性の定義  
 [MeasureTheory.Function.Integrable](MeasureTheory/Function/Integrable.md) - 可積分性の定義
+[MeasureTheory.Function.StronglyMeasurable](MeasureTheory/Function/StronglyMeasurable.md) - 強可測性の定義
 
 ## ProbabilityTheory
 

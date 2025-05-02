@@ -44,6 +44,16 @@ def cofinite : Filter α :=
 ```
 
 ``` lean4
+/-- The principal filter of `s` is the collection of all supersets of `s`. -/
+def principal (s : Set α) : Filter α where
+  sets := { t | s ⊆ t }
+  univ_sets := subset_univ s
+  sets_of_superset hx := Subset.trans hx
+  inter_sets := subset_inter
+```
+`principal`は集合`s`の上に定義されたフィルタです. `s`を含む全ての集合がこのフィルタに属します.
+
+``` lean4
 /-- The forward map of a filter -/
 def map (m : α → β) (f : Filter α) : Filter β where
   sets := preimage m ⁻¹' f.sets
@@ -51,11 +61,20 @@ def map (m : α → β) (f : Filter α) : Filter β where
   sets_of_superset hs st := mem_of_superset hs fun _x hx ↦ st hx
   inter_sets hs ht := inter_mem hs ht
 ```
-`Filter.map`はフィルタの押し出しです.
-
-## Eventually
+`Filter.map`はフィルタ`f`の`m`による押し出しです.
 
 ``` lean4
+/-- `Filter.Tendsto` is the generic "limit of a function" predicate.
+  `Tendsto f l₁ l₂` asserts that for every `l₂` neighborhood `a`,
+  the `f`-preimage of `a` is an `l₁` neighborhood. -/
+def Tendsto (f : α → β) (l₁ : Filter α) (l₂ : Filter β) :=
+  l₁.map f ≤ l₂
+```
+`Tendsto`は関数の極限を定義するものです. フィルタ`l₁`の`f`による押し出しがフィルタ`l₂`に含まれることを述べています.
+
+``` lean4
+
+## Eventually
 /-- `f.Eventually p` or `∀ᶠ x in f, p x` mean that `{x | p x} ∈ f`. E.g., `∀ᶠ x in atTop, p x`
 means that `p` holds true for sufficiently large `x`. -/
 protected def Eventually (p : α → Prop) (f : Filter α) : Prop :=
