@@ -1,0 +1,169 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mathlib probability study note documentation &mdash; mathlib probability study note  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            mathlib probability study note
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Mathlib probability study note documentation</a><ul>
+<li><a class="reference internal" href="#filter">Filter</a></li>
+<li><a class="reference internal" href="#measuretheory">MeasureTheory</a><ul>
+<li><a class="reference internal" href="#outer-measure">Outer Measure</a></li>
+<li><a class="reference internal" href="#measurablespace">MeasurableSpace</a></li>
+<li><a class="reference internal" href="#measure">Measure</a></li>
+<li><a class="reference internal" href="#function">Function</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#probabilitytheory">ProbabilityTheory</a><ul>
+<li><a class="reference internal" href="#kernel">Kernel</a></li>
+<li><a class="reference internal" href="#independence">Independence</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">mathlib probability study note</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Mathlib probability study note documentation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="mathlib-probability-study-note-documentation">
+<h1>Mathlib probability study note documentation<a class="headerlink" href="#mathlib-probability-study-note-documentation" title="Link to this heading"></a></h1>
+<p>このドキュメントはMathlib4の<a class="reference external" href="https://github.com/leanprover-community/mathlib4/tree/master/Mathlib/Probability">確率論</a>と<a class="reference external" href="https://github.com/leanprover-community/mathlib4/tree/master/Mathlib/MeasureTheory">測度論</a>の内容を理解するための勉強ノートです. 基礎的な部分(特に定義)を理解することを目標にします.</p>
+<p>このドキュメントの管理者は非数学科の学生であり, 数学の専門家ではありません. そのため, 数学的な誤りや不正確な表現が含まれている可能性があります. もし誤りを見つけた場合は, Issueを立てていただけると幸いです. またこのノートブックへの貢献を歓迎しています.</p>
+<section id="filter">
+<h2>Filter<a class="headerlink" href="#filter" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="Filter/Defs.html"><span class="std std-doc">Filter.Defs</span></a> - フィルタに関する概念<br />
+<a class="reference internal" href="Filter/Basic.html"><span class="std std-doc">Filter.Basic</span></a> - フィルタの基本的な性質<br />
+<a class="reference internal" href="Filter/AtTopBot.html"><span class="std std-doc">Filter.AtTopBot</span></a> - フィルタの上限と下限<br />
+<a class="reference internal" href="Filter/Topology.html"><span class="std std-doc">Filter.Topology</span></a> - 位相空間におけるフィルタ</p>
+</section>
+<section id="measuretheory">
+<h2>MeasureTheory<a class="headerlink" href="#measuretheory" title="Link to this heading"></a></h2>
+<section id="outer-measure">
+<h3>Outer Measure<a class="headerlink" href="#outer-measure" title="Link to this heading"></a></h3>
+<p><a class="reference internal" href="MeasureTheory/OuterMeasure/Defs.html"><span class="std std-doc">MeasureTheory.OuterMeasure.Defs</span></a> - 外測度の定義<br />
+<a class="reference internal" href="MeasureTheory/OuterMeasure/AE.html"><span class="std std-doc">MeasureTheory.OuterMeasure.AE</span></a> - Almost everywhereの定義<br />
+<a class="reference internal" href="MeasureTheory/OuterMeasure/OfFunction.html"><span class="std std-doc">MeasureTheory.OuterMeasure.OfFunction</span></a> - 外測度の別定義<br />
+<a class="reference internal" href="MeasureTheory/OuterMeasure/Induced.html"><span class="std std-doc">MeasureTheory.OuterMeasure.Induced</span></a> - 外測度の可測集合への制限</p>
+</section>
+<section id="measurablespace">
+<h3>MeasurableSpace<a class="headerlink" href="#measurablespace" title="Link to this heading"></a></h3>
+<p><a class="reference internal" href="MeasureTheory/MeasurableSpace/Defs.html"><span class="std std-doc">MeasureTheory.MeasurableSpace.Defs</span></a> - 可測空間, 可測関数の定義<br />
+<a class="reference internal" href="MeasureTheory/MeasurableSpace/Basic.html"><span class="std std-doc">MeasureTheory.MeasurableSpace.Basic</span></a> - 可測空間の基本的な性質</p>
+</section>
+<section id="measure">
+<h3>Measure<a class="headerlink" href="#measure" title="Link to this heading"></a></h3>
+<p><a class="reference internal" href="MeasureTheory/Measure/MeasureSpaceDef.html"><span class="std std-doc">MeasureTheory.Measure.MeasureSpaceDef</span></a> - 測度の定義<br />
+<a class="reference internal" href="MeasureTheory/Measure/GiryMonad.html"><span class="std std-doc">MeasureTheory.Measure.GiryMonad</span></a> - Giry monad</p>
+</section>
+<section id="function">
+<h3>Function<a class="headerlink" href="#function" title="Link to this heading"></a></h3>
+<p><a class="reference internal" href="MeasureTheory/Function/SimpleFunc.html"><span class="std std-doc">MeasureTheory.Function.SimpleFunc</span></a> - 単関数の定義<br />
+<a class="reference internal" href="MeasureTheory/Function/Lebesgue.html"><span class="std std-doc">MeasureTheory.Function.Lebesgue</span></a> - lintegral<br />
+<a class="reference internal" href="MeasureTheory/Function/HasFiniteIntegral.html"><span class="std std-doc">MeasureTheory.Function.HasFiniteIntegral</span></a> - 絶対可積分性の定義<br />
+<a class="reference internal" href="MeasureTheory/Function/Integrable.html"><span class="std std-doc">MeasureTheory.Function.Integrable</span></a> - 可積分性の定義<br />
+<a class="reference internal" href="MeasureTheory/Function/StronglyMeasurable.html"><span class="std std-doc">MeasureTheory.Function.StronglyMeasurable</span></a> - 強可測性の定義</p>
+</section>
+</section>
+<section id="probabilitytheory">
+<h2>ProbabilityTheory<a class="headerlink" href="#probabilitytheory" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="ProbabilityTheory/ConditionalProbability.html"><span class="std std-doc">ProbabilityTheory.ConditionalProbability</span></a> - 条件付き確率の定義</p>
+<section id="kernel">
+<h3>Kernel<a class="headerlink" href="#kernel" title="Link to this heading"></a></h3>
+<p><a class="reference internal" href="ProbabilityTheory/Kernel/Defs.html"><span class="std std-doc">ProbabilityTheory.Kernel.Defs</span></a> - カーネルの定義</p>
+</section>
+<section id="independence">
+<h3>Independence<a class="headerlink" href="#independence" title="Link to this heading"></a></h3>
+<p><a class="reference internal" href="ProbabilityTheory/Independence/Kernel.html"><span class="std std-doc">ProbabilityTheory.Independence.Kernel</span></a> - カーネルによる独立性の定義<br />
+<a class="reference internal" href="ProbabilityTheory/Independence/Basic.html"><span class="std std-doc">ProbabilityTheory.Independence.Basic</span></a> - 測度から独立性の定義</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Kei Tsukamoto.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,127 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MeasureTheory.MeasureSpace.Lebesgue &mdash; mathlib probability study note  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            mathlib probability study note
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">MeasureTheory.MeasureSpace.Lebesgue</a></li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">mathlib probability study note</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">MeasureTheory.MeasureSpace.Lebesgue</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/MeasureTheory/Function/SimpleFunc.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="measuretheory-measurespace-lebesgue">
+<h1>MeasureTheory.MeasureSpace.Lebesgue<a class="headerlink" href="#measuretheory-measurespace-lebesgue" title="Link to this heading"></a></h1>
+<p>このファイルでは単関数の積分の定義を行います.</p>
+<p>コード元
+<a class="reference external" href="https://leanprover-community.github.io/mathlib4_docs/Mathlib/MeasureTheory/Function/SimpleFunc.html">MeasureTheory.MeasurableSpace.SimpleFunc</a></p>
+<div class="highlight-lean4 notranslate"><div class="highlight"><pre><span></span><span class="sd">/-- A function `f` from a measurable space to any type is called *simple*,</span>
+<span class="sd">if every preimage `f ⁻¹&#39; {x}` is measurable, and the range is finite. This structure bundles</span>
+<span class="sd">a function with these properties. -/</span>
+<span class="kn">structure</span><span class="w"> </span><span class="n">SimpleFunc</span><span class="bp">.</span><span class="o">{</span><span class="n">u</span><span class="o">,</span><span class="w"> </span><span class="n">v</span><span class="o">}</span><span class="w"> </span><span class="o">(</span><span class="n">α</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">Type</span><span class="w"> </span><span class="n">u</span><span class="o">)</span><span class="w"> </span><span class="o">[</span><span class="n">MeasurableSpace</span><span class="w"> </span><span class="n">α</span><span class="o">]</span><span class="w"> </span><span class="o">(</span><span class="n">β</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">Type</span><span class="w"> </span><span class="n">v</span><span class="o">)</span><span class="w"> </span><span class="kn">where</span>
+<span class="w">  </span><span class="n">toFun</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">α</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="n">β</span>
+<span class="w">  </span><span class="n">measurableSet_fiber&#39;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="bp">∀</span><span class="w"> </span><span class="n">x</span><span class="o">,</span><span class="w"> </span><span class="n">MeasurableSet</span><span class="w"> </span><span class="o">(</span><span class="n">toFun</span><span class="w"> </span><span class="bp">⁻¹&#39;</span><span class="w"> </span><span class="o">{</span><span class="n">x</span><span class="o">})</span>
+<span class="w">  </span><span class="n">finite_range&#39;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="o">(</span><span class="n">Set</span><span class="bp">.</span><span class="n">range</span><span class="w"> </span><span class="n">toFun</span><span class="o">)</span><span class="bp">.</span><span class="n">Finite</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">SimpleFunc</span></code>は可測空間から任意の型への単関数を表します. <code class="docutils literal notranslate"><span class="pre">toFun</span></code>はその関数を表し, <code class="docutils literal notranslate"><span class="pre">measurableSet_fiber'</span></code>はその逆像が常に可測であることを示しています. <code class="docutils literal notranslate"><span class="pre">finite_range'</span></code>はその値域が有限であることを示しています.</p>
+<div class="highlight-lean4 notranslate"><div class="highlight"><pre><span></span><span class="kn">local</span><span class="w"> </span><span class="kn">infixr</span><span class="o">:</span><span class="mi">25</span><span class="w"> </span><span class="s2">&quot; →ₛ &quot;</span><span class="w"> </span><span class="bp">=&gt;</span><span class="w"> </span><span class="n">SimpleFunc</span>
+</pre></div>
+</div>
+<p>単関数は以上の記法で表すこともできます.</p>
+<div class="highlight-lean4 notranslate"><div class="highlight"><pre><span></span><span class="sd">/-- Integral of a simple function whose codomain is `ℝ≥0∞`. -/</span>
+<span class="kn">def</span><span class="w"> </span><span class="n">lintegral</span><span class="w"> </span><span class="o">{</span><span class="bp">_</span><span class="n">m</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">MeasurableSpace</span><span class="w"> </span><span class="n">α</span><span class="o">}</span><span class="w"> </span><span class="o">(</span><span class="n">f</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">α</span><span class="w"> </span><span class="bp">→ₛ</span><span class="w"> </span><span class="n">ℝ</span><span class="bp">≥</span><span class="mi">0</span><span class="bp">∞</span><span class="o">)</span><span class="w"> </span><span class="o">(</span><span class="n">μ</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Measure</span><span class="w"> </span><span class="n">α</span><span class="o">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">ℝ</span><span class="bp">≥</span><span class="mi">0</span><span class="bp">∞</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">  </span><span class="bp">∑</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="bp">∈</span><span class="w"> </span><span class="n">f</span><span class="bp">.</span><span class="n">range</span><span class="o">,</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="bp">*</span><span class="w"> </span><span class="n">μ</span><span class="w"> </span><span class="o">(</span><span class="n">f</span><span class="w"> </span><span class="bp">⁻¹&#39;</span><span class="w"> </span><span class="o">{</span><span class="n">x</span><span class="o">})</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">lintegral</span></code>は単関数の積分を定義しています. <code class="docutils literal notranslate"><span class="pre">f.range</span></code>はその値域を表します. <code class="docutils literal notranslate"><span class="pre">μ</span> <span class="pre">(f</span> <span class="pre">⁻¹'</span> <span class="pre">{x})</span></code>はその逆像の測度を表します. <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">*</span> <span class="pre">μ</span> <span class="pre">(f</span> <span class="pre">⁻¹'</span> <span class="pre">{x})</span></code>はその測度に対する重み付けを行っています.</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Kei Tsukamoto.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

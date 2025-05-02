@@ -1,0 +1,217 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Filter.Defs &mdash; mathlib probability study note  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            mathlib probability study note
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Filter.Defs</a><ul>
+<li><a class="reference internal" href="#filter">filterの定義</a></li>
+<li><a class="reference internal" href="#filter-upwards">filter_upwards</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">mathlib probability study note</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Filter.Defs</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/Filter/Defs.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="filter-defs">
+<h1>Filter.Defs<a class="headerlink" href="#filter-defs" title="Link to this heading"></a></h1>
+<p>このファイルではフィルタを定義しています. 測度の定義で使う部分を抜き出して説明します.</p>
+<p>コード元
+<a class="reference external" href="https://leanprover-community.github.io/mathlib4_docs/Mathlib/Order/Filter/Defs.html">Filter.Defs</a></p>
+<section id="filter">
+<h2>filterの定義<a class="headerlink" href="#filter" title="Link to this heading"></a></h2>
+<div class="highlight-lean4 notranslate"><div class="highlight"><pre><span></span><span class="sd">/-- A filter `F` on a type `α` is a collection of sets of `α` which contains the whole `α`,</span>
+<span class="sd">is upwards-closed, and is stable under intersection. We do not forbid this collection to be</span>
+<span class="sd">all sets of `α`. -/</span>
+<span class="kn">structure</span><span class="w"> </span><span class="n">Filter</span><span class="w"> </span><span class="o">(</span><span class="n">α</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">Type</span><span class="bp">*</span><span class="o">)</span><span class="w"> </span><span class="kn">where</span>
+<span class="w">  </span><span class="sd">/-- The set of sets that belong to the filter. -/</span>
+<span class="w">  </span><span class="n">sets</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Set</span><span class="w"> </span><span class="o">(</span><span class="n">Set</span><span class="w"> </span><span class="n">α</span><span class="o">)</span>
+<span class="w">  </span><span class="sd">/-- The set `Set.univ` belongs to any filter. -/</span>
+<span class="w">  </span><span class="n">univ_sets</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Set</span><span class="bp">.</span><span class="n">univ</span><span class="w"> </span><span class="bp">∈</span><span class="w"> </span><span class="n">sets</span>
+<span class="w">  </span><span class="sd">/-- If a set belongs to a filter, then its superset belongs to the filter as well. -/</span>
+<span class="w">  </span><span class="n">sets_of_superset</span><span class="w"> </span><span class="o">{</span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="o">}</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="bp">∈</span><span class="w"> </span><span class="n">sets</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="bp">⊆</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="bp">∈</span><span class="w"> </span><span class="n">sets</span>
+<span class="w">  </span><span class="sd">/-- If two sets belong to a filter, then their intersection belongs to the filter as well. -/</span>
+<span class="w">  </span><span class="n">inter_sets</span><span class="w"> </span><span class="o">{</span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="o">}</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="bp">∈</span><span class="w"> </span><span class="n">sets</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="bp">∈</span><span class="w"> </span><span class="n">sets</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="bp">∩</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="bp">∈</span><span class="w"> </span><span class="n">sets</span>
+</pre></div>
+</div>
+<p>フィルタは全体集合を含み(univ_sets), 上方向に閉じていて(sets_of_superset), 有限交叉に関して閉じている(inter_sets)集合族です.</p>
+<div class="highlight-lean4 notranslate"><div class="highlight"><pre><span></span><span class="sd">/-- Construct a filter from a property that is stable under finite unions.</span>
+<span class="sd">A set `s` belongs to `Filter.comk p _ _ _` iff its complement satisfies the predicate `p`.</span>
+<span class="sd">This constructor is useful to define filters like `Filter.cofinite`. -/</span>
+<span class="kn">def</span><span class="w"> </span><span class="n">comk</span><span class="w"> </span><span class="o">(</span><span class="n">p</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Set</span><span class="w"> </span><span class="n">α</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="kt">Prop</span><span class="o">)</span><span class="w"> </span><span class="o">(</span><span class="n">he</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="bp">∅</span><span class="o">)</span><span class="w"> </span><span class="o">(</span><span class="n">hmono</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="bp">∀</span><span class="w"> </span><span class="n">t</span><span class="o">,</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="bp">∀</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="bp">⊆</span><span class="w"> </span><span class="n">t</span><span class="o">,</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="n">s</span><span class="o">)</span>
+<span class="w">    </span><span class="o">(</span><span class="n">hunion</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="bp">∀</span><span class="w"> </span><span class="n">s</span><span class="o">,</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="bp">∀</span><span class="w"> </span><span class="n">t</span><span class="o">,</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">(</span><span class="n">s</span><span class="w"> </span><span class="bp">∪</span><span class="w"> </span><span class="n">t</span><span class="o">))</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Filter</span><span class="w"> </span><span class="n">α</span><span class="w"> </span><span class="kn">where</span>
+<span class="w">  </span><span class="n">sets</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">{</span><span class="n">t</span><span class="w"> </span><span class="bp">|</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="n">t</span><span class="bp">ᶜ</span><span class="o">}</span>
+<span class="w">  </span><span class="n">univ_sets</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">simpa</span>
+<span class="w">  </span><span class="n">sets_of_superset</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">fun</span><span class="w"> </span><span class="n">ht₁</span><span class="w"> </span><span class="n">ht</span><span class="w"> </span><span class="bp">=&gt;</span><span class="w"> </span><span class="n">hmono</span><span class="w"> </span><span class="bp">_</span><span class="w"> </span><span class="n">ht₁</span><span class="w"> </span><span class="bp">_</span><span class="w"> </span><span class="o">(</span><span class="n">compl_subset_compl</span><span class="bp">.</span><span class="m">2</span><span class="w"> </span><span class="n">ht</span><span class="o">)</span>
+<span class="w">  </span><span class="n">inter_sets</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">fun</span><span class="w"> </span><span class="n">ht₁</span><span class="w"> </span><span class="n">ht₂</span><span class="w"> </span><span class="bp">=&gt;</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">simp</span><span class="w"> </span><span class="o">[</span><span class="n">compl_inter</span><span class="o">,</span><span class="w"> </span><span class="n">hunion</span><span class="w"> </span><span class="bp">_</span><span class="w"> </span><span class="n">ht₁</span><span class="w"> </span><span class="bp">_</span><span class="w"> </span><span class="n">ht₂</span><span class="o">]</span>
+</pre></div>
+</div>
+<p>これはフィルタの定義を補集合で定義するものです.この定義は以下のように<code class="docutils literal notranslate"><span class="pre">Filter.cofinite</span></code>で使われます.</p>
+<div class="highlight-lean4 notranslate"><div class="highlight"><pre><span></span><span class="sd">/-- The cofinite filter is the filter of subsets whose complements are finite. -/</span>
+<span class="kn">def</span><span class="w"> </span><span class="n">cofinite</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Filter</span><span class="w"> </span><span class="n">α</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">  </span><span class="n">comk</span><span class="w"> </span><span class="n">Set</span><span class="bp">.</span><span class="n">Finite</span><span class="w"> </span><span class="n">finite_empty</span><span class="w"> </span><span class="o">(</span><span class="k">fun</span><span class="w"> </span><span class="bp">_</span><span class="n">t</span><span class="w"> </span><span class="n">ht</span><span class="w"> </span><span class="bp">_</span><span class="n">s</span><span class="w"> </span><span class="n">hsub</span><span class="w"> </span><span class="bp">↦</span><span class="w"> </span><span class="n">ht</span><span class="bp">.</span><span class="n">subset</span><span class="w"> </span><span class="n">hsub</span><span class="o">)</span><span class="w"> </span><span class="k">fun</span><span class="w"> </span><span class="bp">_</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="bp">_</span><span class="w"> </span><span class="bp">↦</span><span class="w"> </span><span class="n">h</span><span class="bp">.</span><span class="n">union</span>
+</pre></div>
+</div>
+<div class="highlight-lean4 notranslate"><div class="highlight"><pre><span></span><span class="sd">/-- The principal filter of `s` is the collection of all supersets of `s`. -/</span>
+<span class="kn">def</span><span class="w"> </span><span class="n">principal</span><span class="w"> </span><span class="o">(</span><span class="n">s</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Set</span><span class="w"> </span><span class="n">α</span><span class="o">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Filter</span><span class="w"> </span><span class="n">α</span><span class="w"> </span><span class="kn">where</span>
+<span class="w">  </span><span class="n">sets</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">{</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="bp">|</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="bp">⊆</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">}</span>
+<span class="w">  </span><span class="n">univ_sets</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">subset_univ</span><span class="w"> </span><span class="n">s</span>
+<span class="w">  </span><span class="n">sets_of_superset</span><span class="w"> </span><span class="n">hx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">Subset</span><span class="bp">.</span><span class="n">trans</span><span class="w"> </span><span class="n">hx</span>
+<span class="w">  </span><span class="n">inter_sets</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">subset_inter</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">principal</span></code>は集合<code class="docutils literal notranslate"><span class="pre">s</span></code>の上に定義されたフィルタです. <code class="docutils literal notranslate"><span class="pre">s</span></code>を含む全ての集合がこのフィルタに属します.</p>
+<div class="highlight-lean4 notranslate"><div class="highlight"><pre><span></span><span class="sd">/-- The forward map of a filter -/</span>
+<span class="kn">def</span><span class="w"> </span><span class="n">map</span><span class="w"> </span><span class="o">(</span><span class="n">m</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">α</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="n">β</span><span class="o">)</span><span class="w"> </span><span class="o">(</span><span class="n">f</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Filter</span><span class="w"> </span><span class="n">α</span><span class="o">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Filter</span><span class="w"> </span><span class="n">β</span><span class="w"> </span><span class="kn">where</span>
+<span class="w">  </span><span class="n">sets</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">preimage</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="bp">⁻¹&#39;</span><span class="w"> </span><span class="n">f</span><span class="bp">.</span><span class="n">sets</span>
+<span class="w">  </span><span class="n">univ_sets</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">univ_mem</span>
+<span class="w">  </span><span class="n">sets_of_superset</span><span class="w"> </span><span class="n">hs</span><span class="w"> </span><span class="n">st</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">mem_of_superset</span><span class="w"> </span><span class="n">hs</span><span class="w"> </span><span class="k">fun</span><span class="w"> </span><span class="bp">_</span><span class="n">x</span><span class="w"> </span><span class="n">hx</span><span class="w"> </span><span class="bp">↦</span><span class="w"> </span><span class="n">st</span><span class="w"> </span><span class="n">hx</span>
+<span class="w">  </span><span class="n">inter_sets</span><span class="w"> </span><span class="n">hs</span><span class="w"> </span><span class="n">ht</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">inter_mem</span><span class="w"> </span><span class="n">hs</span><span class="w"> </span><span class="n">ht</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Filter.map</span></code>はフィルタ<code class="docutils literal notranslate"><span class="pre">f</span></code>の<code class="docutils literal notranslate"><span class="pre">m</span></code>による押し出しです.</p>
+<div class="highlight-lean4 notranslate"><div class="highlight"><pre><span></span><span class="sd">/-- `Filter.Tendsto` is the generic &quot;limit of a function&quot; predicate.</span>
+<span class="sd">  `Tendsto f l₁ l₂` asserts that for every `l₂` neighborhood `a`,</span>
+<span class="sd">  the `f`-preimage of `a` is an `l₁` neighborhood. -/</span>
+<span class="kn">def</span><span class="w"> </span><span class="n">Tendsto</span><span class="w"> </span><span class="o">(</span><span class="n">f</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">α</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="n">β</span><span class="o">)</span><span class="w"> </span><span class="o">(</span><span class="n">l₁</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Filter</span><span class="w"> </span><span class="n">α</span><span class="o">)</span><span class="w"> </span><span class="o">(</span><span class="n">l₂</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Filter</span><span class="w"> </span><span class="n">β</span><span class="o">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">  </span><span class="n">l₁</span><span class="bp">.</span><span class="n">map</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="bp">≤</span><span class="w"> </span><span class="n">l₂</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Tendsto</span></code>は関数の極限を定義するものです. フィルタ<code class="docutils literal notranslate"><span class="pre">l₁</span></code>の<code class="docutils literal notranslate"><span class="pre">f</span></code>による押し出しがフィルタ<code class="docutils literal notranslate"><span class="pre">l₂</span></code>に含まれることを述べています.</p>
+<div class="highlight-lean4 notranslate"><div class="highlight"><pre><span></span><span class="bp">##</span><span class="w"> </span><span class="n">Eventually</span>
+<span class="sd">/-- `f.Eventually p` or `∀ᶠ x in f, p x` mean that `{x | p x} ∈ f`. E.g., `∀ᶠ x in atTop, p x`</span>
+<span class="sd">means that `p` holds true for sufficiently large `x`. -/</span>
+<span class="kn">protected</span><span class="w"> </span><span class="kn">def</span><span class="w"> </span><span class="n">Eventually</span><span class="w"> </span><span class="o">(</span><span class="n">p</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">α</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="kt">Prop</span><span class="o">)</span><span class="w"> </span><span class="o">(</span><span class="n">f</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Filter</span><span class="w"> </span><span class="n">α</span><span class="o">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">Prop</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">  </span><span class="o">{</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="bp">|</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">}</span><span class="w"> </span><span class="bp">∈</span><span class="w"> </span><span class="n">f</span>
+
+<span class="kd">@[</span><span class="n">inherit_doc</span><span class="w"> </span><span class="n">Filter</span><span class="bp">.</span><span class="n">Eventually</span><span class="kd">]</span>
+<span class="n">notation3</span><span class="w"> </span><span class="s2">&quot;∀ᶠ &quot;</span><span class="o">(</span><span class="bp">...</span><span class="o">)</span><span class="s2">&quot; in &quot;</span><span class="n">f</span><span class="s2">&quot;, &quot;</span><span class="n">r</span><span class="o">:(</span><span class="kn">scoped</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="bp">=&gt;</span><span class="w"> </span><span class="n">Filter</span><span class="bp">.</span><span class="n">Eventually</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="n">f</span><span class="o">)</span><span class="w"> </span><span class="bp">=&gt;</span><span class="w"> </span><span class="n">r</span>
+</pre></div>
+</div>
+<p>この定義は「述語pを満たす要素xの集合がフィルターfに属している」ことを表しています. この定義の妥当性を具体例を用いて説明します. 補集合が有限である自然数の集合の集合である補有限フィルターを考えます. このときpの補集合は有限であるため, 十分大きなxに対してpが成り立つことを意味します. <code class="docutils literal notranslate"><span class="pre">∀ᶠ</span></code>は<code class="docutils literal notranslate"><span class="pre">Eventually</span></code>の略記です.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Eventually.of_forall</span></code>は全てのxについてpが成り立てば, “十分大きな”xについてpが成り立つことを述べた主張です.
+ちなみに<code class="docutils literal notranslate"><span class="pre">univ_mem'</span></code>の<code class="docutils literal notranslate"><span class="pre">fun</span> <span class="pre">x</span> <span class="pre">_</span> <span class="pre">=&gt;</span> <span class="pre">h</span> <span class="pre">x</span></code>は<code class="docutils literal notranslate"><span class="pre">∀</span> <span class="pre">x</span> <span class="pre">∈</span> <span class="pre">Set.univ,</span> <span class="pre">x</span> <span class="pre">∈</span> <span class="pre">s</span></code>ですが, <code class="docutils literal notranslate"><span class="pre">Set.Subset</span></code>の定義よりこれは<code class="docutils literal notranslate"><span class="pre">Set.univ</span> <span class="pre">⊆</span> <span class="pre">s</span></code>そのものです.</p>
+<div class="highlight-lean4 notranslate"><div class="highlight"><pre><span></span><span class="n">Note</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">should</span><span class="w"> </span><span class="bp">**</span><span class="n">not</span><span class="bp">**</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">definition</span><span class="w"> </span><span class="n">directly</span><span class="o">,</span><span class="w"> </span><span class="n">but</span><span class="w"> </span><span class="n">instead</span><span class="w"> </span><span class="n">write</span><span class="w"> </span><span class="ss">`s</span><span class="w"> </span><span class="bp">⊆</span><span class="w"> </span><span class="n">t</span><span class="bp">`.</span><span class="w"> </span><span class="bp">-/</span>
+<span class="kn">protected</span><span class="w"> </span><span class="kn">def</span><span class="w"> </span><span class="n">Subset</span><span class="w"> </span><span class="o">(</span><span class="n">s₁</span><span class="w"> </span><span class="n">s₂</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Set</span><span class="w"> </span><span class="n">α</span><span class="o">)</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">  </span><span class="bp">∀</span><span class="w"> </span><span class="o">⦃</span><span class="n">a</span><span class="o">⦄,</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="bp">∈</span><span class="w"> </span><span class="n">s₁</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="bp">∈</span><span class="w"> </span><span class="n">s₂</span>
+</pre></div>
+</div>
+<div class="highlight-lean4 notranslate"><div class="highlight"><pre><span></span><span class="sd">/-- Two functions `f` and `g` are *eventually equal* along a filter `l` if the set of `x` such that</span>
+<span class="sd">`f x = g x` belongs to `l`. -/</span>
+<span class="kn">def</span><span class="w"> </span><span class="n">EventuallyEq</span><span class="w"> </span><span class="o">(</span><span class="n">l</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Filter</span><span class="w"> </span><span class="n">α</span><span class="o">)</span><span class="w"> </span><span class="o">(</span><span class="n">f</span><span class="w"> </span><span class="n">g</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">α</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="n">β</span><span class="o">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">Prop</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">  </span><span class="bp">∀ᶠ</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">l</span><span class="o">,</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="bp">=</span><span class="w"> </span><span class="n">g</span><span class="w"> </span><span class="n">x</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">EventuallyEq</span></code>は<code class="docutils literal notranslate"><span class="pre">{x</span> <span class="pre">|</span> <span class="pre">f</span> <span class="pre">x</span> <span class="pre">=</span> <span class="pre">g</span> <span class="pre">x}</span> <span class="pre">∈</span> <span class="pre">l</span></code>と同じ意味です.</p>
+</section>
+<section id="filter-upwards">
+<h2>filter_upwards<a class="headerlink" href="#filter-upwards" title="Link to this heading"></a></h2>
+<div class="highlight-lean4 notranslate"><div class="highlight"><pre><span></span><span class="sd">/--</span>
+<span class="sd">`filter_upwards [h₁, ⋯, hₙ]` replaces a goal of the form `s ∈ f` and terms</span>
+<span class="sd">`h₁ : t₁ ∈ f, ⋯, hₙ : tₙ ∈ f` with `∀ x, x ∈ t₁ → ⋯ → x ∈ tₙ → x ∈ s`.</span>
+<span class="sd">The list is an optional parameter, `[]` being its default value.</span>
+
+<span class="sd">`filter_upwards [h₁, ⋯, hₙ] with a₁ a₂ ⋯ aₖ` is a short form for</span>
+<span class="sd">`{ filter_upwards [h₁, ⋯, hₙ], intros a₁ a₂ ⋯ aₖ }`.</span>
+
+<span class="sd">`filter_upwards [h₁, ⋯, hₙ] using e` is a short form for</span>
+<span class="sd">`{ filter_upwards [h1, ⋯, hn], exact e }`.</span>
+
+<span class="sd">Combining both shortcuts is done by writing `filter_upwards [h₁, ⋯, hₙ] with a₁ a₂ ⋯ aₖ using e`.</span>
+<span class="sd">Note that in this case, the `aᵢ` terms can be used in `e`.</span>
+<span class="sd">--/</span>
+</pre></div>
+</div>
+<p>TODO</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Kei Tsukamoto.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
