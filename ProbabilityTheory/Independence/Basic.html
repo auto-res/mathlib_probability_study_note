@@ -1,0 +1,150 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ProbabilityTheory.Independence.Basic &mdash; mathlib probability study note  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            mathlib probability study note
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">ProbabilityTheory.Independence.Basic</a></li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">mathlib probability study note</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">ProbabilityTheory.Independence.Basic</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/ProbabilityTheory/Independence/Basic.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="probabilitytheory-independence-basic">
+<h1>ProbabilityTheory.Independence.Basic<a class="headerlink" href="#probabilitytheory-independence-basic" title="Link to this heading"></a></h1>
+<p>このファイルでは<a class="reference internal" href="Kernel.html"><span class="std std-doc">ProbabilityTheory.Independence.Kernel</span></a>で定義したカーネルによる独立性を用いて, 測度から独立性を定義します.</p>
+<p>まず, 独立性の定義に使われる<code class="docutils literal notranslate"><span class="pre">Kernel.const</span></code>と<code class="docutils literal notranslate"><span class="pre">Measure.dirac</span></code>の定義を見ます.(他のファイルから参照)</p>
+<div class="highlight-lean4 notranslate"><div class="highlight"><pre><span></span><span class="sd">/-- Constant kernel, which always returns the same measure. -/</span>
+<span class="kn">def</span><span class="w"> </span><span class="n">const</span><span class="w"> </span><span class="o">(</span><span class="n">α</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">Type</span><span class="bp">*</span><span class="o">)</span><span class="w"> </span><span class="o">{</span><span class="n">β</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">Type</span><span class="bp">*</span><span class="o">}</span><span class="w"> </span><span class="o">[</span><span class="n">MeasurableSpace</span><span class="w"> </span><span class="n">α</span><span class="o">]</span><span class="w"> </span><span class="o">{</span><span class="bp">_</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">MeasurableSpace</span><span class="w"> </span><span class="n">β</span><span class="o">}</span><span class="w"> </span><span class="o">(</span><span class="n">μβ</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Measure</span><span class="w"> </span><span class="n">β</span><span class="o">)</span><span class="w"> </span><span class="o">:</span>
+<span class="w">    </span><span class="n">Kernel</span><span class="w"> </span><span class="n">α</span><span class="w"> </span><span class="n">β</span><span class="w"> </span><span class="kn">where</span>
+<span class="w">  </span><span class="n">toFun</span><span class="w"> </span><span class="bp">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">μβ</span>
+<span class="w">  </span><span class="n">measurable&#39;</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">measurable_const</span>
+</pre></div>
+</div>
+<p>Constant Kernelはどんな引数を与えても同じ測度を返す関数です.また, この関数は可測になっています.</p>
+<div class="highlight-lean4 notranslate"><div class="highlight"><pre><span></span><span class="sd">/-- The dirac outer measure. -/</span>
+<span class="kn">def</span><span class="w"> </span><span class="n">dirac</span><span class="w"> </span><span class="o">(</span><span class="n">a</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">α</span><span class="o">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">OuterMeasure</span><span class="w"> </span><span class="n">α</span><span class="w"> </span><span class="kn">where</span>
+<span class="w">  </span><span class="n">measureOf</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">indicator</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">(</span><span class="k">fun</span><span class="w"> </span><span class="bp">_</span><span class="w"> </span><span class="bp">=&gt;</span><span class="w"> </span><span class="mi">1</span><span class="o">)</span><span class="w"> </span><span class="n">a</span>
+<span class="w">  </span><span class="n">empty</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">simp</span>
+<span class="w">  </span><span class="n">mono</span><span class="w"> </span><span class="o">{</span><span class="bp">_</span><span class="w"> </span><span class="bp">_</span><span class="o">}</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">indicator_le_indicator_of_subset</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">(</span><span class="k">fun</span><span class="w"> </span><span class="bp">_</span><span class="w"> </span><span class="bp">=&gt;</span><span class="w"> </span><span class="n">zero_le</span><span class="w"> </span><span class="bp">_</span><span class="o">)</span><span class="w"> </span><span class="n">a</span>
+<span class="w">  </span><span class="n">iUnion_nat</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="bp">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">calc</span>
+<span class="w">    </span><span class="n">indicator</span><span class="w"> </span><span class="o">(</span><span class="bp">⋃</span><span class="w"> </span><span class="n">n</span><span class="o">,</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="n">n</span><span class="o">)</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="bp">=</span><span class="w"> </span><span class="bp">⨆</span><span class="w"> </span><span class="n">n</span><span class="o">,</span><span class="w"> </span><span class="n">indicator</span><span class="w"> </span><span class="o">(</span><span class="n">s</span><span class="w"> </span><span class="n">n</span><span class="o">)</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">      </span><span class="n">indicator_iUnion_apply</span><span class="w"> </span><span class="o">(</span><span class="n">M</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">ℝ</span><span class="bp">≥</span><span class="mi">0</span><span class="bp">∞</span><span class="o">)</span><span class="w"> </span><span class="n">rfl</span><span class="w"> </span><span class="bp">_</span><span class="w"> </span><span class="bp">_</span><span class="w"> </span><span class="bp">_</span>
+<span class="w">    </span><span class="bp">_</span><span class="w"> </span><span class="bp">≤</span><span class="w"> </span><span class="bp">∑&#39;</span><span class="w"> </span><span class="n">n</span><span class="o">,</span><span class="w"> </span><span class="n">indicator</span><span class="w"> </span><span class="o">(</span><span class="n">s</span><span class="w"> </span><span class="n">n</span><span class="o">)</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">iSup_le</span><span class="w"> </span><span class="k">fun</span><span class="w"> </span><span class="bp">_</span><span class="w"> </span><span class="bp">↦</span><span class="w"> </span><span class="n">ENNReal</span><span class="bp">.</span><span class="n">le_tsum</span><span class="w"> </span><span class="bp">_</span>
+
+<span class="sd">/-- The dirac measure. -/</span>
+<span class="kn">def</span><span class="w"> </span><span class="n">dirac</span><span class="w"> </span><span class="o">(</span><span class="n">a</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">α</span><span class="o">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Measure</span><span class="w"> </span><span class="n">α</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">(</span><span class="n">OuterMeasure</span><span class="bp">.</span><span class="n">dirac</span><span class="w"> </span><span class="n">a</span><span class="o">)</span><span class="bp">.</span><span class="n">toMeasure</span><span class="w"> </span><span class="o">(</span><span class="k">by</span><span class="w"> </span><span class="n">simp</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>Dirac measureは, Dirac outer measureを使って定義されます. Dirac outer measureは, 指示関数を使って定義されていて, <code class="docutils literal notranslate"><span class="pre">s</span></code>が<code class="docutils literal notranslate"><span class="pre">a</span></code>である時は1, それ以外は0を返します. Dirac measureはDirac outer measureを使って定義されていて, Dirac outer measureの性質を引き継いでいます.</p>
+<div class="highlight-lean4 notranslate"><div class="highlight"><pre><span></span><span class="sd">/-- A family of measurable space structures (i.e. of σ-algebras) is independent with respect to a</span>
+<span class="sd">measure `μ` (typically defined on a finer σ-algebra) if the family of sets of measurable sets they</span>
+<span class="sd">define is independent. `m : ι → MeasurableSpace Ω` is independent with respect to measure `μ` if</span>
+<span class="sd">for any finite set of indices `s = {i_1, ..., i_n}`, for any sets</span>
+<span class="sd">`f i_1 ∈ m i_1, ..., f i_n ∈ m i_n`, then `μ (⋂ i in s, f i) = ∏ i ∈ s, μ (f i)`. -/</span>
+<span class="kn">def</span><span class="w"> </span><span class="n">iIndep</span><span class="w"> </span><span class="o">(</span><span class="n">m</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">ι</span><span class="w"> </span><span class="bp">→</span><span class="w"> </span><span class="n">MeasurableSpace</span><span class="w"> </span><span class="n">Ω</span><span class="o">)</span><span class="w"> </span><span class="o">{</span><span class="bp">_</span><span class="n">mΩ</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">MeasurableSpace</span><span class="w"> </span><span class="n">Ω</span><span class="o">}</span><span class="w"> </span><span class="o">(</span><span class="n">μ</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Measure</span><span class="w"> </span><span class="n">Ω</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">volume_tac</span><span class="o">)</span><span class="w"> </span><span class="o">:</span>
+<span class="w">    </span><span class="kt">Prop</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">  </span><span class="n">Kernel</span><span class="bp">.</span><span class="n">iIndep</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">(</span><span class="n">Kernel</span><span class="bp">.</span><span class="n">const</span><span class="w"> </span><span class="n">Unit</span><span class="w"> </span><span class="n">μ</span><span class="o">)</span><span class="w"> </span><span class="o">(</span><span class="n">Measure</span><span class="bp">.</span><span class="n">dirac</span><span class="w"> </span><span class="o">()</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Measure</span><span class="w"> </span><span class="n">Unit</span><span class="o">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Unit</span></code>はただ一つの要素<code class="docutils literal notranslate"><span class="pre">()</span></code>を持つ標準(canonical)な型です. また, ここでは<code class="docutils literal notranslate"><span class="pre">Unit</span></code>は多相的に使われています.</p>
+<p>添え字付きの可測空間が独立であるとは入力値によらない定数カーネルについて任意の有限個の添え字の集合が独立である(<code class="docutils literal notranslate"><span class="pre">Kernel.iIndep</span></code>)ことと定義します.</p>
+<div class="highlight-lean4 notranslate"><div class="highlight"><pre><span></span><span class="sd">/-- Two measurable space structures (or σ-algebras) `m₁, m₂` are independent with respect to a</span>
+<span class="sd">measure `μ` (defined on a third σ-algebra) if for any sets `t₁ ∈ m₁, t₂ ∈ m₂`,</span>
+<span class="sd">`μ (t₁ ∩ t₂) = μ (t₁) * μ (t₂)` -/</span>
+<span class="kn">def</span><span class="w"> </span><span class="n">Indep</span><span class="w"> </span><span class="o">(</span><span class="n">m₁</span><span class="w"> </span><span class="n">m₂</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">MeasurableSpace</span><span class="w"> </span><span class="n">Ω</span><span class="o">)</span>
+<span class="w">    </span><span class="o">{</span><span class="bp">_</span><span class="n">mΩ</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">MeasurableSpace</span><span class="w"> </span><span class="n">Ω</span><span class="o">}</span><span class="w"> </span><span class="o">(</span><span class="n">μ</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Measure</span><span class="w"> </span><span class="n">Ω</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">volume_tac</span><span class="o">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">Prop</span><span class="w"> </span><span class="o">:=</span>
+<span class="w">  </span><span class="n">Kernel</span><span class="bp">.</span><span class="n">Indep</span><span class="w"> </span><span class="n">m₁</span><span class="w"> </span><span class="n">m₂</span><span class="w"> </span><span class="o">(</span><span class="n">Kernel</span><span class="bp">.</span><span class="n">const</span><span class="w"> </span><span class="n">Unit</span><span class="w"> </span><span class="n">μ</span><span class="o">)</span><span class="w"> </span><span class="o">(</span><span class="n">Measure</span><span class="bp">.</span><span class="n">dirac</span><span class="w"> </span><span class="o">()</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Measure</span><span class="w"> </span><span class="n">Unit</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>添え字付きの可測空間が独立であるとは入力値によらない定数カーネルに関して任意の集合が独立である(<code class="docutils literal notranslate"><span class="pre">Kernel.Indep</span></code>)ことと定義します.</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Kei Tsukamoto.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
